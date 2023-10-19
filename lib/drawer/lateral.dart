@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyectou/screens/page2.dart';
-import 'package:proyectou/screens/page3.dart';
-import 'package:proyectou/screens/page4.dart';
-
-
 import 'package:url_launcher/url_launcher.dart';
-import '../screens/page1.dart';
 
 class DrawerWigdet extends StatefulWidget {
   const DrawerWigdet({super.key});
@@ -18,223 +12,181 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      width: 200,
-      child: ListView(
-        // Importante: elimine cualquier padding del ListView.
+        shape: const Border(left: BorderSide.none),
+        backgroundColor: const Color.fromARGB(255, 253, 253, 253),
+        width: 280,
+        child: ListView(
+            // Importante: elimine cualquier padding del ListView.
 
-        children: <Widget>[
-          const Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              DrawerHeader(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      opacity: 0,
-                      image: AssetImage('assets/images/pastel.png'),
-                    ),
-                  ),
-                  padding: EdgeInsets.all(0),
-                  child: Column(
-                    children: [
-                      // SizedBox(height: 20),
-                      CircleAvatar(
-                        radius: 65,
-                        backgroundColor: Colors.transparent,
-                        backgroundImage:
-                        AssetImage('assets/images/playstore.png'),
-                      )
-                    ],
-                  ))
-            ],
-          ),
-          // const Divider(
-          //   color: Color(0xfff921b21),
-          //   endIndent: 30,
-          //   thickness: 0.30,
-          //   height: 0,
-          //   indent: 30,
-          // ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ListTile(
-                leading: const Icon(Icons.home),
-                iconColor: const Color.fromARGB(255, 58, 88, 212),
-                enabled: true,
-                hoverColor: const Color.fromARGB(255, 30, 231, 231),
-                title: const Text(
-                  'INICIO',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 0, 0, 0),
-                      fontWeight: FontWeight.w600,
-                      fontSize: 11),
-                ),
-                onTap: () {
-                  Navigator.pop(
-                      context); // Actualiza el estado de la aplicación
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                          const Page1())); // ...
-                },
+            children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.only(left: 10, bottom: 20),
+                child: Text('Proyecto U',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        decoration: TextDecoration.none)),
               ),
-            ],
-          ),
-          ListTile(
-            leading: const Icon(Icons.room_service_outlined),
-            title: const Text(
-              'SERVICIOS',
-              style: TextStyle(
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.w600,
-                  fontSize: 11),
-            ),
-            iconColor: const Color.fromARGB(255, 27, 145, 25),
-            enabled: true,
-            hoverColor: const Color.fromARGB(255, 30, 231, 231),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => const Page2()));
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.safety_divider),
-            iconColor: const Color.fromARGB(255, 231, 127, 7),
-            enabled: true,
-            hoverColor: const Color.fromARGB(255, 30, 231, 231),
-            title: const Text('BIENESTAR',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 12, 12, 12),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 11)),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => const Page3()));
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.security),
-            iconColor: const Color.fromARGB(255, 211, 12, 12),
-            enabled: true,
-            hoverColor: const Color.fromARGB(255, 234, 205, 167),
-            title: const Text('POLITICAS  SEGURIDAD',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 23, 23, 22),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 11)),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                      const Page4())); // Actualiza el estado de la aplicación
-              // ...
-            },
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Divider(
-            color: Color(0xfff921b21),
-            endIndent: 30,
-            thickness: 0.30,
-            height: 0,
-            indent: 30,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          ListTile(
-              leading: const Icon(Icons.assistant_navigation),
-              iconColor: const Color.fromARGB(255, 26, 21, 168),
-              enabled: true,
-              hoverColor: const Color.fromARGB(255, 234, 205, 167),
-              title: const Text('SIATH',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 26, 21, 168),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12)),
-              onTap: () async {
-                final url = Uri.parse(
-                    'https://portalapp.mindefensa.gov.co:8449/siathweb-app/#/inicio');
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                  print('Cliked');
-                  // Actualiza el estado de la aplicación
-                  // ...
-                }
-              }),
-          ListTile(
-              leading: const Icon(Icons.family_restroom),
-              iconColor: const Color.fromARGB(255, 100, 97, 93),
-              enabled: true,
-              hoverColor: const Color.fromARGB(255, 234, 205, 167),
-              title: const Text('Convenios Insitucionales',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 26, 21, 168),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12)),
-              onTap: () async {
-                final url = Uri.parse(
-                    'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                  print('Cliked');
-                  // Actualiza el estado de la aplicación
-                  // ...
-                }
-              }),
-          // ListTile(
-          //   leading: const Icon(Icons.people_alt_outlined),
-          //   iconColor: const Color.fromARGB(255, 100, 97, 93),
-          //   enabled: false,
-          //   hoverColor: const Color.fromARGB(255, 26, 21, 168),
-          //   title: const Text('Soldados Profesionales',
-          //       style: TextStyle(
-          //           color: Color.fromARGB(255, 70, 70, 77),
-          //           fontWeight: FontWeight.bold,
-          //           fontSize: 12)),
-          //   onTap: () {
-          //     Navigator.pop(context);
-          //     Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             builder: (BuildContext context) =>
-          //                 const Page4())); // Actualiza el estado de la aplicación
-          //     // ...
-          //   },
-          // ),
-          // ListTile(
-          //   leading: const Icon(Icons.person_outline),
-          //   iconColor: const Color.fromARGB(255, 100, 97, 93),
-          //   enabled: false,
-          //   hoverColor: const Color.fromARGB(255, 234, 205, 167),
-          //   title: const Text('Personal Civil',
-          //       style: TextStyle(
-          //           color: Color.fromARGB(255, 70, 70, 77),
-          //           fontWeight: FontWeight.bold,
-          //           fontSize: 12)),
-          //   onTap: () {
-          //     Navigator.pop(context);
-          //     Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             builder: (BuildContext context) =>
-          //                 const Page4())); // Actualiza el estado de la aplicación
-          //     // ...
-          //   },
-          // ),
-        ],
-      ),
-    );
+              ListTile(
+                  leading: const Icon(Icons.assistant_navigation),
+                  iconColor: const Color.fromARGB(255, 26, 21, 168),
+                  enabled: true,
+                  hoverColor: const Color.fromARGB(255, 234, 205, 167),
+                  title: const Text('SIATH',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 26, 21, 168),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12)),
+                  onTap: () async {
+                    final url = Uri.parse(
+                        'https://portalapp.mindefensa.gov.co:8449/siathweb-app/#/inicio');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
+                      print('Cliked');
+                      // Actualiza el estado de la aplicación
+                      // ...
+                    }
+                  }),
+              ListTile(
+                  leading: const Icon(Icons.family_restroom),
+                  iconColor: const Color.fromARGB(255, 100, 97, 93),
+                  enabled: true,
+                  hoverColor: const Color.fromARGB(255, 234, 205, 167),
+                  title: const Text('Convenios Insitucionales',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 26, 21, 168),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12)),
+                  onTap: () async {
+                    final url = Uri.parse(
+                        'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
+                      print('Cliked');
+                      // Actualiza el estado de la aplicación
+                      // ...
+                    }
+                  }),
+              const SizedBox(
+                height: 20,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 10, bottom: 10),
+                child: Text('CANALES DESTACADOS ',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: AutofillHints.birthdayMonth,
+                        decorationStyle: TextDecorationStyle.solid,
+                        fontStyle: FontStyle.normal,
+                        // fontSize: 18,
+                        decoration: TextDecoration.none)),
+              ),
+              // DrawerHeader(
+              //   curve: Curves.bounceIn,
+              //   margin: EdgeInsets.only(top: 0, bottom: 20, left: 0),
+              //   padding: EdgeInsets.only(top: 10, bottom: 0, left: 0),
+              //   // decoration: BoxDecoration(
+              //   //     border: Border.fromBorderSide(BorderSide.none),
+              //   //     shape: BoxShape.circle,
+              //   //     color: Color.fromARGB(255, 250, 247, 247),
+              //   //     image: DecorationImage(
+              //   //         fit: BoxFit.contain,
+              //   //         image: AssetImage('assets/images/launcher.png'))),
+              //   // duration: Duration(microseconds: 20),
+              //   child: Text('PROYECTO U',
+              //       textAlign: TextAlign.center,
+              //       style: TextStyle(fontWeight: FontWeight.bold)),
+              // ),
+              // Text(
+              //   'Destacados',
+              //   textAlign: TextAlign.center,
+              //   style: TextStyle(
+              //       fontStyle: FontStyle.normal, fontWeight: FontWeight.w400),
+              // ),
+
+              // const Divider(
+              //   color: Color(0xfff921b21),
+              //   endIndent: 30,
+              //   thickness: 0.30,
+              //   height: 0,
+              //   indent: 30,
+              // ),
+              Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ListTile(
+                        leading: const Icon(Icons.chrome_reader_mode_outlined),
+                        title: const Text(
+                          'REVISTA SEMANA',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 11),
+                        ),
+                        iconColor: const Color.fromARGB(255, 9, 9, 9),
+                        enabled: true,
+                        hoverColor: const Color.fromARGB(255, 30, 231, 231),
+                        onTap: () async {
+                          final url = Uri.parse(
+                              'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
+                          if (await canLaunchUrl(url)) {
+                            await launchUrl(url);
+                            print('Cliked');
+                            // Actualiza el estado de la aplicación
+                            // ...
+                          }
+                        }),
+                    ListTile(
+                        leading: const Icon(Icons.chrome_reader_mode_outlined),
+                        title: const Text(
+                          'REVISTA EL TIEMPO',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 11),
+                        ),
+                        iconColor: Color.fromARGB(255, 9, 9, 9),
+                        enabled: true,
+                        hoverColor: const Color.fromARGB(255, 30, 231, 231),
+                        onTap: () async {
+                          final url = Uri.parse(
+                              'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
+                          if (await canLaunchUrl(url)) {
+                            await launchUrl(url);
+                            print('Cliked');
+                            // Actualiza el estado de la aplicación
+                            // ...
+                          }
+                        }),
+                    ListTile(
+                        leading: const Icon(Icons.chrome_reader_mode_outlined),
+                        title: const Text(
+                          'REVISTA EL ESPECTADOR',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 11),
+                        ),
+                        iconColor: Color.fromARGB(255, 9, 9, 9),
+                        enabled: true,
+                        hoverColor: const Color.fromARGB(255, 30, 231, 231),
+                        onTap: () async {
+                          final url = Uri.parse(
+                              'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
+                          if (await canLaunchUrl(url)) {
+                            await launchUrl(url);
+                            print('Cliked');
+                            // Actualiza el estado de la aplicación
+                            // ...
+                          }
+                        }),
+                  ],
+                ),
+              ),
+            ]));
   }
 }

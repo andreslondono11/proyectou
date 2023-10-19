@@ -70,15 +70,16 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       //appBar: AppBar(
       // title: const Text('AppBar Demo'),
       //  ),
-      //drawer: DrawerWigdet(),
+      drawer: const DrawerWigdet(),//drawer: DrawerWigdet(),
       bottomNavigationBar: myBnB,
       body: Rutas(index: index),
-      drawer: const DrawerWigdet(),
+
 
 
 
