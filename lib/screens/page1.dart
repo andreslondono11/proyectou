@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_radio_player/flutter_radio_player.dart';
+// import 'package:flutter_radio_player/models/frp_source_modal.dart';
 import 'package:proyectou/drawer/lateral.dart';
+// import 'package:proyectou/screens/emisora.dart';
+// // import 'package:radio_player/radio_player.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,21 +16,6 @@ class Page1 extends StatefulWidget {
 
 class _Page1State extends State<Page1> {
   @override
-  // final bool _iconbool = false;
-
-  // IconData _iconLigth = Icons.wb_sunny;
-  // IconData _iconLDark = Icons.nights_stay;
-
-  // final ThemeData _LightTheme = ThemeData(
-  //   primarySwatch: Colors.blue,
-  //   brightness: Brightness.light,
-  // );
-
-  // final ThemeData _DarkTheme = ThemeData(
-  //   primarySwatch: Colors.blue,
-  //   brightness: Brightness.dark,
-  // );
-
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -150,7 +139,8 @@ class _Page1State extends State<Page1> {
               const SizedBox(
                 height: 30,
               ),
-              columna3()
+
+              // )
             ],
           ),
         ));
@@ -179,7 +169,7 @@ Widget columna2() {
               decorationStyle: TextDecorationStyle.double),
           textAlign: TextAlign.justify,
         ),
-      )
+      ),
     ],
   );
 }

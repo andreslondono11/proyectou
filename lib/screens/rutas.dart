@@ -4,7 +4,6 @@ import 'package:proyectou/screens/page2.dart';
 import 'package:proyectou/screens/page3.dart';
 import 'package:proyectou/screens/page4.dart';
 
-
 class Rutas extends StatelessWidget {
   final int index;
 
@@ -19,7 +18,7 @@ class Rutas extends StatelessWidget {
       const Page1(),
       const Page2(),
       const Page3(),
-      const Page4()
+      Page4()
     ];
     return MyList[index];
   }

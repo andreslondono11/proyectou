@@ -35,7 +35,7 @@ class _NavegaHomeState extends State<NavegaHome> {
               icon: Icon(Icons.room_service), label: 'Servicios'),
           BottomNavigationBarItem(
               icon: Icon(Icons.safety_divider), label: 'Bienestar'),
-          BottomNavigationBarItem(icon: Icon(Icons.policy), label: 'Politicas'),
+          BottomNavigationBarItem(icon: Icon(Icons.tv), label: 'Noticias'),
         ]);
   }
 }

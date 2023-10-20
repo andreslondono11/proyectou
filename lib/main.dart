@@ -6,7 +6,6 @@ import 'package:proyectou/screens/rutas.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:startapp_sdk/startapp.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
@@ -36,7 +35,7 @@ class _HomePageState extends State<HomePage> {
   NavegaHome? myBnB;
   final RateMyApp rateMyApp = RateMyApp(
     minDays: 0,
-    minLaunches: 3,
+    minLaunches: 2,
     googlePlayIdentifier: "com.proyectou.proyectou",
   );
 
@@ -50,13 +49,14 @@ class _HomePageState extends State<HomePage> {
 
     rateMyApp.init().then((_) {
       rateMyApp.conditions.forEach((condition) {
-        if (condition is DebuggableCondition){
+        if (condition is DebuggableCondition) {
           print(condition.valuesAsString);
         }
       });
 
-      if(rateMyApp.shouldOpenDialog){
-        rateMyApp.showRateDialog(context,
+      if (rateMyApp.shouldOpenDialog) {
+        rateMyApp.showRateDialog(
+          context,
           title: 'Calfica mi APP',
           message: 'tu opinion es importante para seguir mejorando',
           rateButton: 'CALIFICA',
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               rateMyApp.callEvent(RateMyAppEventType.laterButtonPressed),
         );
       }
-    } );
+    });
     super.initState();
   }
 
@@ -76,14 +76,9 @@ class _HomePageState extends State<HomePage> {
       //appBar: AppBar(
       // title: const Text('AppBar Demo'),
       //  ),
-      drawer: const DrawerWigdet(),//drawer: DrawerWigdet(),
+      drawer: const DrawerWigdet(), //drawer: DrawerWigdet(),
       bottomNavigationBar: myBnB,
       body: Rutas(index: index),
-
-
-
-
-
     );
   }
 }
@@ -109,7 +104,7 @@ class _MyAppState extends State {
         this.interstitialAd = interstitialAd;
       });
     }).onError((ex, stackTrace) {
-      debugPrint("Error loading Interstitial ad: ${ex?.hashCode}");
+      debugPrint("Error loading Interstitial ad: ${ex?.runtimeType}");
     }).onError((error, stackTrace) {
       debugPrint("Error loading Interstitial ad: $error");
     });
@@ -125,7 +120,7 @@ class _MyAppState extends State {
               if (shown) {
                 setState(() {
                   // NOTE interstitial ad can be shown only once
-                  this.interstitialAd = interstitialAd ;
+                  this.interstitialAd = interstitialAd;
 
                   // NOTE load again
                   loadInterstitialAd();

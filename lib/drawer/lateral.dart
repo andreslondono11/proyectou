@@ -13,7 +13,7 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
   Widget build(BuildContext context) {
     return Drawer(
         shape: const Border(left: BorderSide.none),
-        backgroundColor: const Color.fromARGB(255, 253, 253, 253),
+        backgroundColor: const Color(0xfffecf1f7),
         width: 280,
         child: ListView(
             // Importante: elimine cualquier padding del ListView.
@@ -30,13 +30,12 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
               ),
               ListTile(
                   leading: const Icon(Icons.assistant_navigation),
-                  iconColor: const Color.fromARGB(255, 26, 21, 168),
+                  iconColor: Color.fromARGB(255, 84, 82, 82),
                   enabled: true,
-                  hoverColor: const Color.fromARGB(255, 234, 205, 167),
                   title: const Text('SIATH',
                       style: TextStyle(
-                          color: Color.fromARGB(255, 26, 21, 168),
-                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 84, 82, 82),
+                          fontWeight: FontWeight.w400,
                           fontSize: 12)),
                   onTap: () async {
                     final url = Uri.parse(
@@ -53,10 +52,10 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
                   iconColor: const Color.fromARGB(255, 100, 97, 93),
                   enabled: true,
                   hoverColor: const Color.fromARGB(255, 234, 205, 167),
-                  title: const Text('Convenios Insitucionales',
+                  title: const Text('BIENESTAR',
                       style: TextStyle(
-                          color: Color.fromARGB(255, 26, 21, 168),
-                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 84, 82, 82),
+                          fontWeight: FontWeight.w400,
                           fontSize: 12)),
                   onTap: () async {
                     final url = Uri.parse(
@@ -69,7 +68,7 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
                     }
                   }),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               const Padding(
                 padding: EdgeInsets.only(left: 10, bottom: 10),
@@ -80,59 +79,51 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
                         fontFamily: AutofillHints.birthdayMonth,
                         decorationStyle: TextDecorationStyle.solid,
                         fontStyle: FontStyle.normal,
-                        // fontSize: 18,
                         decoration: TextDecoration.none)),
               ),
-              // DrawerHeader(
-              //   curve: Curves.bounceIn,
-              //   margin: EdgeInsets.only(top: 0, bottom: 20, left: 0),
-              //   padding: EdgeInsets.only(top: 10, bottom: 0, left: 0),
-              //   // decoration: BoxDecoration(
-              //   //     border: Border.fromBorderSide(BorderSide.none),
-              //   //     shape: BoxShape.circle,
-              //   //     color: Color.fromARGB(255, 250, 247, 247),
-              //   //     image: DecorationImage(
-              //   //         fit: BoxFit.contain,
-              //   //         image: AssetImage('assets/images/launcher.png'))),
-              //   // duration: Duration(microseconds: 20),
-              //   child: Text('PROYECTO U',
-              //       textAlign: TextAlign.center,
-              //       style: TextStyle(fontWeight: FontWeight.bold)),
-              // ),
-              // Text(
-              //   'Destacados',
-              //   textAlign: TextAlign.center,
-              //   style: TextStyle(
-              //       fontStyle: FontStyle.normal, fontWeight: FontWeight.w400),
-              // ),
-
-              // const Divider(
-              //   color: Color(0xfff921b21),
-              //   endIndent: 30,
-              //   thickness: 0.30,
-              //   height: 0,
-              //   indent: 30,
-              // ),
               Padding(
                 padding: const EdgeInsets.all(0.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     ListTile(
-                        leading: const Icon(Icons.chrome_reader_mode_outlined),
+                        leading: const Icon(Icons.note_outlined),
                         title: const Text(
-                          'REVISTA SEMANA',
+                          'SEMANA',
                           style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontWeight: FontWeight.w600,
+                              color: Color.fromARGB(255, 84, 82, 82),
+                              fontWeight: FontWeight.w400,
                               fontSize: 11),
                         ),
-                        iconColor: const Color.fromARGB(255, 9, 9, 9),
+                        iconColor: const Color.fromARGB(255, 84, 82, 82),
                         enabled: true,
-                        hoverColor: const Color.fromARGB(255, 30, 231, 231),
                         onTap: () async {
-                          final url = Uri.parse(
-                              'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
+                          final url = Uri.parse('https://www.semana.com/');
+                          if (await canLaunchUrl(url)) {
+                            await launchUrl(url,
+                                mode: LaunchMode.inAppWebView,
+                                webViewConfiguration:
+                                    const WebViewConfiguration(
+                                        enableDomStorage: true,
+                                        enableJavaScript: true));
+                            print('Cliked');
+                            // Actualiza el estado de la aplicación
+                            // ...
+                          }
+                        }),
+                    ListTile(
+                        leading: const Icon(Icons.note_outlined),
+                        title: const Text(
+                          'EL TIEMPO',
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 84, 82, 82),
+                              fontWeight: FontWeight.w400,
+                              fontSize: 11),
+                        ),
+                        iconColor: const Color.fromARGB(255, 84, 82, 82),
+                        enabled: true,
+                        onTap: () async {
+                          final url = Uri.parse('https://www.eltiempo.com/');
                           if (await canLaunchUrl(url)) {
                             await launchUrl(url);
                             print('Cliked');
@@ -141,42 +132,19 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
                           }
                         }),
                     ListTile(
-                        leading: const Icon(Icons.chrome_reader_mode_outlined),
+                        leading: const Icon(Icons.note_outlined),
                         title: const Text(
-                          'REVISTA EL TIEMPO',
+                          'EL ESPECTADOR',
                           style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontWeight: FontWeight.w600,
+                              color: Color.fromARGB(255, 84, 82, 82),
+                              fontWeight: FontWeight.w400,
                               fontSize: 11),
                         ),
-                        iconColor: Color.fromARGB(255, 9, 9, 9),
+                        iconColor: const Color.fromARGB(255, 84, 82, 82),
                         enabled: true,
-                        hoverColor: const Color.fromARGB(255, 30, 231, 231),
                         onTap: () async {
-                          final url = Uri.parse(
-                              'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(url);
-                            print('Cliked');
-                            // Actualiza el estado de la aplicación
-                            // ...
-                          }
-                        }),
-                    ListTile(
-                        leading: const Icon(Icons.chrome_reader_mode_outlined),
-                        title: const Text(
-                          'REVISTA EL ESPECTADOR',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 11),
-                        ),
-                        iconColor: Color.fromARGB(255, 9, 9, 9),
-                        enabled: true,
-                        hoverColor: const Color.fromARGB(255, 30, 231, 231),
-                        onTap: () async {
-                          final url = Uri.parse(
-                              'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
+                          final url =
+                              Uri.parse('https://www.elespectador.com/');
                           if (await canLaunchUrl(url)) {
                             await launchUrl(url);
                             print('Cliked');
@@ -187,6 +155,97 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 10, bottom: 10),
+                child: Text('APLICACIONES DESTACADAS ',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: AutofillHints.birthdayMonth,
+                        decorationStyle: TextDecorationStyle.solid,
+                        fontStyle: FontStyle.normal,
+                        // fontSize: 18,
+                        decoration: TextDecoration.none)),
+              ),
+              ListTile(
+                  leading: const Icon(Icons.cast_for_education_outlined),
+                  title: const Text(
+                    'DOCTRINA MILITAR',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 84, 82, 82),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 11),
+                  ),
+                  iconColor: const Color.fromARGB(255, 84, 82, 82),
+                  enabled: true,
+                  onTap: () async {
+                    final url = Uri.parse(
+                        'https://play.google.com/store/apps/details?id=co.mil.ejercito.doctrina');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
+                      print('Cliked');
+                      // Actualiza el estado de la aplicación
+                      // ...
+                    }
+                  }),
+              ListTile(
+                  leading: const Icon(Icons.home_work_outlined),
+                  title: const Text(
+                    'CAJA DE HONOR',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 84, 82, 82),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 11),
+                  ),
+                  iconColor: const Color.fromARGB(255, 84, 82, 82),
+                  enabled: true,
+                  onTap: () async {
+                    final url = Uri.parse(
+                        'https://play.google.com/store/apps/details?id=com.proximate.caja_honor');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
+                      print('Cliked');
+                      // Actualiza el estado de la aplicación
+                      // ...
+                    }
+                  }),
+              const SizedBox(
+                height: 180,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                        elevation: 5.2,
+                        padding: const EdgeInsets.only(top: 0, right: 100),
+                        // textStyle: TextStyle(decoration: TextDecoration.underline),
+                        // backgroundColor: const Color(0xfff921b21),
+                        foregroundColor:
+                            const Color.fromARGB(255, 101, 100, 100)),
+                    isSemanticButton: true,
+                    child: const Text(
+                      'POLITICAS DE SEGURIDAD',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontSize: 12,
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
+                    onPressed: () async {
+                      final url = Uri.parse(
+                          'https://sites.google.com/view/politicasde-seguridad/politicas-de-seguridad');
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(url);
+                        print('Cliked');
+                      }
+                    },
+                  ),
+                ],
+              )
             ]));
   }
 }

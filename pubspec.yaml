@@ -40,6 +40,8 @@ dependencies:
   webview_flutter: ^4.4.1
   startapp_sdk: 0.4.2
   rate_my_app: ^2.0.0
+  # radio_player: ^1.5.0
+  # flutter_radio_player: ^2.0.2
 
 dev_dependencies:
   flutter_test:
