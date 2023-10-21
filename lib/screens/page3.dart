@@ -19,6 +19,8 @@ class _Page3State extends State<Page3> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
+            iconTheme:
+                const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
             backgroundColor: const Color(0xfff921b21),
             shadowColor: Colors.blueGrey,
             elevation: 10.2,

@@ -14,6 +14,8 @@ class Page2 extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           appBar: AppBar(
+            iconTheme:
+                const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
             elevation: 10.2,
             shadowColor: Colors.blueGrey,
             title: const Text(
@@ -156,7 +158,7 @@ Widget boton1() {
               foregroundColor: const Color.fromARGB(255, 241, 242, 242)),
           onPressed: () async {
             final url =
-            Uri.parse('https://caocc.ejercito.mil.co:4443/SiwepDiper-web/');
+                Uri.parse('https://caocc.ejercito.mil.co:4443/SiwepDiper-web/');
             if (await canLaunchUrl(url)) {
               await launchUrl(url);
               print('Cliked');
@@ -184,7 +186,7 @@ Widget boton2() {
               foregroundColor: const Color.fromARGB(255, 241, 242, 242)),
           onPressed: () async {
             final url =
-            Uri.parse('https://fovid.ejercito.mil.co:4443/Fovid-2.0/');
+                Uri.parse('https://fovid.ejercito.mil.co:4443/Fovid-2.0/');
             if (await canLaunchUrl(url)) {
               await launchUrl(url);
               print('Cliked');

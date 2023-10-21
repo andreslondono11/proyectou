@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_radio_player/flutter_radio_player.dart';
 // import 'package:flutter_radio_player/models/frp_source_modal.dart';
 import 'package:proyectou/drawer/lateral.dart';
+
 // import 'package:proyectou/screens/emisora.dart';
 // // import 'package:radio_player/radio_player.dart';
 
@@ -23,6 +24,12 @@ class _Page1State extends State<Page1> {
         home: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            iconTheme:
+                const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+
+            //   preferredSize: Size(0, 0),
+            //   child: ModoOscurod(),
+            // ),
             backgroundColor: const Color(0xfff921b21),
             elevation: 10.2,
             shadowColor: Colors.blueGrey,

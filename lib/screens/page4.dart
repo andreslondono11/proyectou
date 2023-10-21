@@ -23,7 +23,8 @@ class Page4 extends StatelessWidget {
         },
       ),
     )
-    ..loadRequest(Uri.parse('https://www.youtube.com/watch?v=pM4O3DwIQ2o'));
+    ..loadRequest(Uri.parse(
+        'https://sites.google.com/view/pzplatinum/p%C3%A1gina-principal'));
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,8 @@ class Page4 extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: AppBar(
+              iconTheme: const IconThemeData(
+                  color: Color.fromARGB(255, 255, 255, 255)),
               backgroundColor: const Color(0xfff921b21),
               shadowColor: const Color(0xfff921b21),
               elevation: 10.5,
