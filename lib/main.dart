@@ -1,14 +1,9 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:proyectou/drawer/lateral.dart';
 import 'package:proyectou/screens/boton_nav.dart';
-
 import 'package:proyectou/screens/rutas.dart';
 import 'package:rate_my_app/rate_my_app.dart';
-import 'package:startapp_sdk/startapp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +22,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false, title: 'home', home: HomePage());
+        themeMode: ThemeMode.light,
+        debugShowCheckedModeBanner: false,
+        title: 'home',
+        home: HomePage());
   }
 }
 
@@ -43,7 +41,8 @@ class _HomePageState extends State<HomePage> {
   NavegaHome? myBnB;
   final RateMyApp rateMyApp = RateMyApp(
     minDays: 0,
-    minLaunches: 2,
+    remindLaunches: 3,
+    minLaunches: 3,
     googlePlayIdentifier: "com.proyectou.proyectou",
   );
 
@@ -56,11 +55,11 @@ class _HomePageState extends State<HomePage> {
     });
 
     rateMyApp.init().then((_) {
-      rateMyApp.conditions.forEach((condition) {
+      for (var condition in rateMyApp.conditions) {
         if (condition is DebuggableCondition) {
           print(condition.valuesAsString);
         }
-      });
+      }
 
       if (rateMyApp.shouldOpenDialog) {
         rateMyApp.showRateDialog(
@@ -92,62 +91,6 @@ class _HomePageState extends State<HomePage> {
       // drawerEdgeDragWidth: 200, //drawer: DrawerWigdet(),
       bottomNavigationBar: myBnB,
       body: Rutas(index: index),
-    );
-  }
-}
-
-class _MyAppState extends State {
-  var startAppSdk = StartAppSdk();
-
-  StartAppInterstitialAd? interstitialAd;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // TODO make sure to comment out this line before release
-    startAppSdk.setTestAdsEnabled(true);
-
-    loadInterstitialAd();
-  }
-
-  void loadInterstitialAd() {
-    startAppSdk.loadInterstitialAd().then((interstitialAd) {
-      setState(() {
-        this.interstitialAd = interstitialAd;
-      });
-    }).onError((ex, stackTrace) {
-      debugPrint("Error loading Interstitial ad: ${ex?.runtimeType}");
-    }).onError((error, stackTrace) {
-      debugPrint("Error loading Interstitial ad: $error");
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          if (interstitialAd != startAppSdk) {
-            interstitialAd!.show().then((shown) {
-              if (shown) {
-                setState(() {
-                  // NOTE interstitial ad can be shown only once
-                  this.interstitialAd = interstitialAd;
-
-                  // NOTE load again
-                  loadInterstitialAd();
-                });
-              }
-
-              return null;
-            }).onError((error, stackTrace) {
-              debugPrint("Error showing Interstitial ad: $error");
-            });
-          }
-        },
-        child: Text('Show Interstitial'),
-      ),
     );
   }
 }

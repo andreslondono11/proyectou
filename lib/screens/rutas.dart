@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:proyectou/screens/page1.dart';
 import 'package:proyectou/screens/page2.dart';

@@ -1,214 +1,154 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_radio_player/flutter_radio_player.dart';
-// import 'package:flutter_radio_player/models/frp_source_modal.dart';
-import 'package:proyectou/drawer/lateral.dart';
-
-// import 'package:proyectou/screens/emisora.dart';
-// // import 'package:radio_player/radio_player.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
-class Page1 extends StatefulWidget {
+import '../drawer/lateral.dart';
+
+class Page1 extends StatelessWidget {
   const Page1({super.key});
 
   @override
-  State<Page1> createState() => _Page1State();
-}
-
-class _Page1State extends State<Page1> {
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        theme: ThemeData(primarySwatch: Colors.pink),
+        darkTheme: ThemeData.dark(),
+        themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
-        // theme: _iconbool ? _DarkTheme : _LightTheme,
         home: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            iconTheme:
-                const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
-
-            //   preferredSize: Size(0, 0),
-            //   child: ModoOscurod(),
-            // ),
-            backgroundColor: const Color(0xfff921b21),
-            elevation: 10.2,
-            shadowColor: Colors.blueGrey,
-            title: const Text(
-              'Inicios',
-              style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+            drawer: const DrawerWigdet(),
+            appBar: AppBar(
+              iconTheme: const IconThemeData(
+                  color: Color.fromARGB(255, 255, 255, 255)),
+              backgroundColor: const Color(0xfff921b21),
+              elevation: 10.2,
+              shadowColor: Colors.blueGrey,
+              title: const Text(
+                'Inicios',
+                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+              ),
             ),
-            // actions: [
-            //   IconButton(
-            //       onPressed: () {
-            //         setState(() {
-            //           _iconbool ? _iconLDark : _iconLigth;
-            //         });
-            //       },
-            //       icon: Icon(_iconbool ? _iconLDark : _iconLigth))
-
-            //   // _iconbool = !_iconbool;
-            // ],
-          ),
-          drawer: const DrawerWigdet(),
-          body: ListView(
-            children: [
-              siath(),
-              Container(
-                  margin: const EdgeInsets.only(left: 80, right: 80),
-                  padding: const EdgeInsets.only(left: 60, right: 60),
-                  color: Colors.transparent,
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                        elevation: 10,
-                        padding: const EdgeInsets.all(1),
-                        backgroundColor: const Color(0xfff921b21),
-                        foregroundColor:
-                            const Color.fromARGB(255, 255, 255, 255)),
-                    isSemanticButton: true,
-                    child: const Text(
-                      'Ingresa aqui',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    onPressed: () async {
-                      final url = Uri.parse(
-                          'https://portalapp.mindefensa.gov.co:8449/siathweb-app/#/inicio');
-                      if (await canLaunchUrl(url)) {
-                        await launchUrl(url);
-                        print('Cliked');
-                      }
-                    },
-                  )),
-              const SizedBox(
-                height: 0,
-              ),
-              const Divider(
-                endIndent: 50,
-                indent: 50,
-                thickness: 2.05,
-                color: Color.fromARGB(255, 239, 234, 234),
-              ),
-              const SizedBox(
-                height: 0,
-              ),
-              siath1(),
-              Container(
-                  margin: const EdgeInsets.only(left: 70, right: 70),
-                  padding: const EdgeInsets.only(left: 50, right: 50),
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                        elevation: 5.2,
-                        padding: const EdgeInsets.all(1),
-                        backgroundColor: const Color(0xfff921b21),
-                        foregroundColor:
-                            const Color.fromARGB(255, 237, 241, 246)),
-                    isSemanticButton: true,
-                    child: const Text(
-                      'Saca tu Cita Medica',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    onPressed: () async {
-                      final url = Uri.parse('https://portal.saludsis.mil.co/');
-                      if (await canLaunchUrl(url)) {
-                        await launchUrl(url);
-                        print('Cliked');
-                      }
-                    },
-                  )),
-              const SizedBox(
-                height: 0,
-              ),
-              const Divider(
-                endIndent: 50,
-                indent: 50,
-                thickness: 2.05,
-                color: Color.fromARGB(255, 239, 234, 234),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              columna2(),
-              const SizedBox(
-                height: 10,
-              ),
-              const Divider(
-                endIndent: 50,
-                indent: 50,
-                thickness: 2.05,
-                color: Color.fromARGB(255, 148, 78, 21),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-
-              // )
-            ],
-          ),
-        ));
+            body: ListView(
+              children: [
+                texto1(),
+                colunma1(),
+                boton1(),
+                espacio(),
+                colunma2(),
+                boton2(),
+                division(),
+                espacio(),
+                texto2()
+              ],
+            )));
   }
 }
 
-Widget siath() {
-  return Container(
-    child: const Image(
-        height: 120, image: AssetImage('assets/images/siathmnd.png')),
-  );
-}
-
-Widget columna2() {
-  return Column(
+Widget colunma1() {
+  return const Row(
     children: [
-      Container(
-        margin: const EdgeInsets.only(left: 20, right: 30),
-        alignment: Alignment.center,
-        // color: const Color.fromARGB(255, 255, 255, 255),
-        child: const Text(
-          'Proyecto U es una aplicación móvil versátil desarrollada por PZPLATINUM para la plataforma Android e IOS Diseñada para el Ejército Nacional, esta aplicación ofrece una forma conveniente de acceder a varios servicios esenciales en un solo lugar. Desde obtener su tarjeta de identificación digital hasta recibir notificaciones sobre traslados, gestionar correos electrónicos y programar citas médicas, Proyecto U tiene como objetivo agilizar las tareas administrativas del personal militar.',
-          style: TextStyle(
-              color: Color.fromARGB(255, 142, 148, 150),
-              fontSize: 12,
-              decorationStyle: TextDecorationStyle.double),
-          textAlign: TextAlign.justify,
-        ),
+      Image(width: 190, image: AssetImage('assets/images/siathmnd.png')),
+      SizedBox(
+        width: 140,
+        child: Text(
+            'Ingrese al portal web y descargue desprendibles, certificaciones y otros documentos relacionados con su hoja de vida.',
+            textAlign: TextAlign.justify),
       ),
     ],
   );
 }
 
-Widget siath1() {
-  return Container(
-    color: const Color.fromARGB(255, 255, 255, 255),
-    child:
-        const Image(height: 120, image: AssetImage('assets/images/salud.jpg')),
+Widget colunma2() {
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      SizedBox(
+        width: 130,
+        child: Text(
+            'Bienvenido a nuestro portal de trámites en línea para el Subsistema de Salud de las Fuerzas Militares.',
+            textAlign: TextAlign.justify),
+      ),
+      Image(width: 190, image: AssetImage('assets/images/salud.png')),
+    ],
   );
 }
 
-Widget columna3() {
-  return Column(
-    children: [
-      Container(
-        margin: const EdgeInsets.only(left: 20, right: 30),
-        alignment: Alignment.center,
-        //color: const Color.fromARGB(255, 5, 113, 201),
-        child: const Text(
-          'Entra a la seccion de Servicios para que tenga acceso a todos los canales Insittucionales que te ofrece la Insititucion, como tambien a la Seccion "BIenestar" para que tengas acceso a mas de 250 convenios que tiene la Insititucion Para los miembros de las Fuerzas Militares',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Color(0xfff921b21),
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ),
-      const SizedBox(
-        height: 10,
-      ),
-    ],
+Widget espacio() {
+  return (const SizedBox(
+    height: 20,
+  ));
+}
+
+Widget boton1() {
+  return Container(
+    margin: const EdgeInsets.only(right: 250, left: 10),
+    child: TextButton(
+        style: TextButton.styleFrom(
+            padding: const EdgeInsets.all(1.0),
+            minimumSize: const Size(30, 30),
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white),
+        onPressed: () async {
+          final url = Uri.parse(
+              'https://portalapp.mindefensa.gov.co:8449/siathweb-app/#/inicio');
+          if (await canLaunchUrl(url)) {
+            await launchUrl(url);
+            print('Clikec');
+          }
+        },
+        child: const Text('Ingresa Aqui')),
+  );
+}
+
+Widget boton2() {
+  return Container(
+    margin: const EdgeInsets.only(right: 10, left: 250),
+    child: TextButton(
+        style: TextButton.styleFrom(
+            padding: const EdgeInsets.all(1.0),
+            minimumSize: const Size(30, 30),
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.white),
+        onPressed: () async {
+          final url = Uri.parse('https://portal.saludsis.mil.co/');
+          if (await canLaunchUrl(url)) {
+            await launchUrl(url);
+            print('Clikec');
+          }
+        },
+        child: const Text('Ingresa Aqui')),
+  );
+}
+
+Widget texto1() {
+  return const Padding(
+    padding: EdgeInsets.only(top: 20, bottom: 20),
+    child: Text(
+      'PROYECTO U',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+          fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xfff921b21)),
+    ),
+  );
+}
+
+Widget division() {
+  return const Divider(
+    endIndent: 50,
+    indent: 50,
+    thickness: 2.05,
+    color: Color.fromARGB(255, 239, 234, 234),
+  );
+}
+
+Widget texto2() {
+  return Container(
+    margin: const EdgeInsets.only(left: 20, right: 20),
+    child: const Text(
+      'La aplicación Nace el año 2020, con el objetivo de facilitar las tareas administrativas de todos los miembros de la Institución. Agradecimiento especial al Batallón de Fuerzas Especiales Urbanas No 2, por la motivación que me dieron día a día y llevar todo el proyecto a nivel nacional ratificando el compromiso voluntario de ser un engranaje importante del Ejercito Nacional, por eso declaro que esta aplicación es totalmente libre y solo espero responsabilidad en el uso de los servicios.',
+      style: TextStyle(
+          color: Color.fromARGB(255, 142, 148, 150),
+          fontSize: 12,
+          decorationStyle: TextDecorationStyle.double),
+      textAlign: TextAlign.justify,
+    ),
   );
 }
