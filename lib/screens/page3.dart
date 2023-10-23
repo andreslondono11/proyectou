@@ -47,7 +47,7 @@ class _Page3State extends State<Page3> {
                   isSelected: true,
                   iconSize: 18,
                   padding: const EdgeInsets.only(left: 10),
-                  color: const Color.fromARGB(255, 243, 170, 33),
+                  color: Colors.white,
                   onPressed: () {
                     changeTheme(ThemeMode.light);
                   },
