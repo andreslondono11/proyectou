@@ -20,7 +20,7 @@ class Rutas extends StatelessWidget {
       const Page1(),
       const Page2(),
       const Page3(),
-      Page4()
+      const Page4()
     ];
     return MyList[index];
   }

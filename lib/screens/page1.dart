@@ -1,21 +1,74 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../drawer/lateral.dart';
 
-class Page1 extends StatelessWidget {
+class Page1 extends StatefulWidget {
   const Page1({super.key});
+
+  @override
+  State<Page1> createState() => _Page1State();
+}
+
+class _Page1State extends State<Page1> {
+  ThemeMode _themeMode = ThemeMode.system;
+  void changeTheme(ThemeMode themeMode) {
+    setState(() {
+      _themeMode = themeMode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.pink),
-        darkTheme: ThemeData.dark(),
-        themeMode: ThemeMode.system,
+        theme: ThemeData(primarySwatch: Colors.deepPurple),
+        darkTheme: ThemeData.from(
+            colorScheme: const ColorScheme(
+                brightness: Brightness.light,
+                primary: Color.fromARGB(255, 52, 2, 2),
+                onPrimary: Color.fromARGB(255, 47, 7, 7),
+                secondary: Color.fromARGB(255, 10, 54, 99),
+                onSecondary: Color.fromARGB(255, 35, 37, 36),
+                error: Color.fromARGB(255, 223, 39, 39),
+                onError: Color.fromARGB(255, 111, 25, 25),
+                background: Color.fromARGB(255, 72, 71, 71),
+                onBackground: Color.fromARGB(255, 228, 7, 7),
+                surface: Color.fromARGB(255, 163, 157, 157),
+                onSurface: Color.fromARGB(255, 247, 241, 241))),
+        themeMode: _themeMode,
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             drawer: const DrawerWigdet(),
             appBar: AppBar(
+              actions: [
+                IconButton(
+                    visualDensity: VisualDensity.adaptivePlatformDensity,
+                    constraints: const BoxConstraints(maxWidth: 10),
+                    isSelected: true,
+                    iconSize: 18,
+                    padding: const EdgeInsets.only(left: 10),
+                    color: const Color.fromARGB(255, 243, 170, 33),
+                    onPressed: () {
+                      changeTheme(ThemeMode.light);
+                    },
+                    icon: const Icon(
+                      Icons.light_mode,
+                      semanticLabel: 'Modo Luz',
+                      // color: Colors.amber,
+                    )),
+                IconButton(
+                    padding: const EdgeInsets.only(right: 15),
+                    color: Colors.white,
+                    iconSize: 18,
+                    onPressed: () {
+                      changeTheme(ThemeMode.dark);
+                    },
+                    icon: const Icon(
+                      Icons.dark_mode,
+                      semanticLabel: 'Modo Oscuro',
+                    ))
+              ],
               iconTheme: const IconThemeData(
                   color: Color.fromARGB(255, 255, 255, 255)),
               backgroundColor: const Color(0xfff921b21),
@@ -36,7 +89,7 @@ class Page1 extends StatelessWidget {
                 boton2(),
                 division(),
                 espacio(),
-                texto2()
+                texto2(),
               ],
             )));
   }

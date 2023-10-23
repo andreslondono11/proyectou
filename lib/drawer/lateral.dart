@@ -213,10 +213,10 @@ class _DrawerWigdetState extends State<DrawerWigdet> {
                     }
                   }),
               const SizedBox(
-                height: 180,
+                height: 100,
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+                // mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
                     style: TextButton.styleFrom(

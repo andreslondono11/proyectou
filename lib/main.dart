@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:proyectou/drawer/lateral.dart';
+
 import 'package:proyectou/screens/boton_nav.dart';
 import 'package:proyectou/screens/rutas.dart';
 import 'package:rate_my_app/rate_my_app.dart';
@@ -21,11 +23,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        themeMode: ThemeMode.light,
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'home',
-        home: HomePage());
+        home: const HomePage());
   }
 }
 
@@ -80,15 +81,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(
-      // title: const Text('AppBar Demo'),
-      //  ),
-      drawer: const DrawerWigdet(),
-      // drawerEnableOpenDragGesture: true,
+      drawer: DrawerWigdet(),
+      drawerDragStartBehavior: DragStartBehavior.down,
+
+      drawerEnableOpenDragGesture: true,
       // drawerDragStartBehavior: DragStartBehavior.down,
-      // drawerScrimColor: Colors.transparent,
+      drawerScrimColor: Color.fromARGB(17, 253, 253, 253),
       // endDrawer: DrawerWigdet(),
-      // drawerEdgeDragWidth: 200, //drawer: DrawerWigdet(),
+      drawerEdgeDragWidth: 10,
       bottomNavigationBar: myBnB,
       body: Rutas(index: index),
     );

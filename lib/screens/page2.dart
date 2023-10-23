@@ -5,15 +5,70 @@ import 'package:proyectou/drawer/lateral.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:unwebsiath/screens/page4.dart';
 
-class Page2 extends StatelessWidget {
+class Page2 extends StatefulWidget {
   const Page2({super.key});
+
+  @override
+  State<Page2> createState() => _Page2State();
+}
+
+class _Page2State extends State<Page2> {
+  ThemeMode _themeMode = ThemeMode.system;
+  void changeTheme(ThemeMode themeMode) {
+    setState(() {
+      _themeMode = themeMode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.blue),
+      darkTheme: ThemeData.from(
+          colorScheme: const ColorScheme(
+              brightness: Brightness.dark,
+              primary: Color.fromARGB(255, 8, 7, 7),
+              onPrimary: Color.fromARGB(255, 4, 0, 0),
+              secondary: Color.fromARGB(255, 37, 38, 39),
+              onSecondary: Color.fromARGB(255, 35, 37, 36),
+              error: Colors.white,
+              onError: Colors.white,
+              background: Color.fromARGB(255, 72, 71, 71),
+              onBackground: Color.fromARGB(255, 21, 21, 21),
+              surface: Color.fromARGB(255, 163, 157, 157),
+              onSurface: Color.fromARGB(255, 248, 248, 248))),
+      themeMode: _themeMode,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           appBar: AppBar(
+            actions: [
+              IconButton(
+                  visualDensity: VisualDensity.adaptivePlatformDensity,
+                  constraints: const BoxConstraints(maxWidth: 10),
+                  isSelected: true,
+                  iconSize: 18,
+                  padding: const EdgeInsets.only(left: 10),
+                  color: const Color.fromARGB(255, 243, 170, 33),
+                  onPressed: () {
+                    changeTheme(ThemeMode.light);
+                  },
+                  icon: const Icon(
+                    Icons.light_mode,
+                    semanticLabel: 'Modo Luz',
+                    // color: Colors.amber,
+                  )),
+              IconButton(
+                  padding: const EdgeInsets.only(right: 15),
+                  color: Colors.white,
+                  iconSize: 18,
+                  onPressed: () {
+                    changeTheme(ThemeMode.dark);
+                  },
+                  icon: const Icon(
+                    Icons.dark_mode,
+                    semanticLabel: 'Modo Oscuro',
+                  ))
+            ],
             iconTheme:
                 const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
             elevation: 10.2,
@@ -25,6 +80,8 @@ class Page2 extends StatelessWidget {
             backgroundColor: const Color(0xfff921b21),
           ),
           drawer: const DrawerWigdet(),
+          // drawerDragStartBehavior: DragStartBehavior.down,
+
           body: ListView(
             children: [
               img1(),
