@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proyectou/drawer/lateral.dart';
+import 'package:provider/provider.dart';
+import 'package:proyectou/bloc/theme.dart';
 
 // import 'package:unwebsiath/screens/page4.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,108 +14,48 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
-  ThemeMode _themeMode = ThemeMode.system;
-  void changeTheme(ThemeMode themeMode) {
-    setState(() {
-      _themeMode = themeMode;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.blue),
-      darkTheme: ThemeData.from(
-          colorScheme: const ColorScheme(
-              brightness: Brightness.dark,
-              primary: Color.fromARGB(255, 8, 7, 7),
-              onPrimary: Color.fromARGB(255, 4, 0, 0),
-              secondary: Color.fromARGB(255, 37, 38, 39),
-              onSecondary: Color.fromARGB(255, 35, 37, 36),
-              error: Colors.white,
-              onError: Colors.white,
-              background: Color.fromARGB(255, 72, 71, 71),
-              onBackground: Color.fromARGB(255, 21, 21, 21),
-              surface: Color.fromARGB(255, 163, 157, 157),
-              onSurface: Color.fromARGB(255, 248, 248, 248))),
-      themeMode: _themeMode,
+      theme: theme.getTheme(),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            actions: [
-              IconButton(
-                  visualDensity: VisualDensity.adaptivePlatformDensity,
-                  constraints: const BoxConstraints(maxWidth: 10),
-                  isSelected: true,
-                  iconSize: 18,
-                  padding: const EdgeInsets.only(left: 10),
-                  color: Colors.white,
-                  onPressed: () {
-                    changeTheme(ThemeMode.light);
-                  },
-                  icon: const Icon(
-                    Icons.light_mode,
-                    semanticLabel: 'Modo Luz',
-                    // color: Colors.amber,
-                  )),
-              IconButton(
-                  padding: const EdgeInsets.only(right: 15),
-                  color: Colors.white,
-                  iconSize: 18,
-                  onPressed: () {
-                    changeTheme(ThemeMode.dark);
-                  },
-                  icon: const Icon(
-                    Icons.dark_mode,
-                    semanticLabel: 'Modo Oscuro',
-                  ))
-            ],
-            iconTheme:
-                const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
-            elevation: 10.2,
-            shadowColor: Colors.blueGrey,
-            title: const Text(
-              'Servicios',
-              style: TextStyle(color: Colors.white),
-            ),
-            backgroundColor: const Color(0xfff921b21),
-          ),
-          drawer: const DrawerWigdet(),
           // drawerDragStartBehavior: DragStartBehavior.down,
 
           body: ListView(
+        children: [
+          img1(),
+          linea1(),
+          margen2(),
+          cei(),
+          margen1(),
+          img2(),
+          linea1(),
+          margen2(),
+          boton1(),
+          margen1(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              img1(),
-              linea1(),
-              margen2(),
-              cei(),
-              margen1(),
-              img2(),
-              linea1(),
-              margen2(),
-              boton1(),
-              margen1(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  img4(),
-                  img3(),
-                ],
-              ),
-              linea1(),
-              // margen2(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  boton3(),
-                  boton2(),
-                ],
-              ),
-              // margen1(),
-              // linea1(),
-              // margen2(),
+              img4(),
+              img3(),
             ],
-          )),
+          ),
+          linea1(),
+          // margen2(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              boton3(),
+              boton2(),
+            ],
+          ),
+          // margen1(),
+          // linea1(),
+          // margen2(),
+        ],
+      )),
     );
   }
 }

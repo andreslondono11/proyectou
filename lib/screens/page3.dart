@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proyectou/drawer/lateral.dart';
+import 'package:provider/provider.dart';
+import 'package:proyectou/bloc/theme.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -12,75 +13,14 @@ class Page3 extends StatefulWidget {
 
 class _Page3State extends State<Page3> {
   //
-  ThemeMode _themeMode = ThemeMode.system;
-  void changeTheme(ThemeMode themeMode) {
-    setState(() {
-      _themeMode = themeMode;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.blue),
-        darkTheme: ThemeData.from(
-            colorScheme: const ColorScheme(
-                brightness: Brightness.dark,
-                primary: Color.fromARGB(255, 12, 12, 12),
-                onPrimary: Color.fromARGB(255, 28, 27, 27),
-                secondary: Color.fromARGB(255, 37, 38, 39),
-                onSecondary: Color.fromARGB(255, 238, 245, 239),
-                error: Colors.white,
-                onError: Colors.white,
-                background: Color.fromARGB(255, 97, 94, 94),
-                onBackground: Color.fromARGB(255, 16, 14, 14),
-                surface: Color.fromARGB(255, 63, 48, 48),
-                onSurface: Color.fromARGB(255, 243, 238, 238))),
-        themeMode: _themeMode,
+        theme: theme.getTheme(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          appBar: AppBar(
-            actions: [
-              IconButton(
-                  visualDensity: VisualDensity.adaptivePlatformDensity,
-                  constraints: const BoxConstraints(maxWidth: 10),
-                  isSelected: true,
-                  iconSize: 18,
-                  padding: const EdgeInsets.only(left: 10),
-                  color: Colors.white,
-                  onPressed: () {
-                    changeTheme(ThemeMode.light);
-                  },
-                  icon: const Icon(
-                    Icons.light_mode,
-                    semanticLabel: 'Modo Luz',
-                    // color: Colors.amber,
-                  )),
-              IconButton(
-                  padding: const EdgeInsets.only(right: 15),
-                  color: Colors.white,
-                  iconSize: 18,
-                  onPressed: () {
-                    changeTheme(ThemeMode.dark);
-                  },
-                  icon: const Icon(
-                    Icons.dark_mode,
-                    semanticLabel: 'Modo Oscuro',
-                  ))
-            ],
-            iconTheme:
-                const IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
-            backgroundColor: const Color(0xfff921b21),
-            shadowColor: Colors.blueGrey,
-            elevation: 10.2,
-            title: const Text(
-              'Bienestar',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          drawer: const DrawerWigdet(),
-          // drawerDragStartBehavior: DragStartBehavior.down,
-
           body: ListView(
             children: [
               const SizedBox(
