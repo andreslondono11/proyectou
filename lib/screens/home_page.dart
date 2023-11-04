@@ -1,14 +1,16 @@
+//libreria principal
 import 'package:flutter/material.dart';
+//libreria de terceros
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:proyectou/bloc/theme.dart';
-
+import 'package:rate_my_app/rate_my_app.dart';
+import 'package:url_launcher/url_launcher.dart';
+//esta libreria de los scafold
 import 'package:proyectou/screens/page1.dart';
 import 'package:proyectou/screens/page2.dart';
 import 'package:proyectou/screens/page3.dart';
 import 'package:proyectou/screens/page4.dart';
-import 'package:rate_my_app/rate_my_app.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:proyectou/bloc/theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,7 +22,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final RateMyApp rateMyApp = RateMyApp(
     minDays: 0,
-    remindLaunches: 3,
+    remindLaunches: 6,
     minLaunches: 3,
     googlePlayIdentifier: "com.proyectou.proyectou",
   );
@@ -36,10 +38,11 @@ class _HomePageState extends State<HomePage> {
         rateMyApp.showRateDialog(
           context,
           title: 'Calfica mi APP',
-          message: 'tu opinion es importante para seguir mejorando',
+          message:
+              'Estamos trabajando en importantes mejoras en tu aplicacion, agradeceremos tu gran Opinion ',
           rateButton: 'CALIFICA',
           noButton: 'No Gracias',
-          laterButton: 'Quizas Despues',
+          laterButton: 'Quizas Mas tarde',
           onDismissed: () =>
               rateMyApp.callEvent(RateMyAppEventType.laterButtonPressed),
         );
@@ -50,7 +53,7 @@ class _HomePageState extends State<HomePage> {
 
   int _currentIndex = 0;
 
-  final screens = [Page1(), Page2(), Page3(), Page4()];
+  final screens = const [Page1(), Page2(), Page3(), Page4()];
 
   final colori = [
     Colors.blue,
@@ -58,25 +61,43 @@ class _HomePageState extends State<HomePage> {
     Colors.green,
     const Color.fromARGB(255, 222, 142, 237)
   ];
+  final text = [
+    const Text(
+      'INICIO',
+      style: TextStyle(fontWeight: FontWeight.w300),
+    ),
+    const Text(
+      'SERVICIOS',
+      style: TextStyle(fontWeight: FontWeight.w300),
+    ),
+    const Text(
+      'DOCTRINA',
+      style: TextStyle(fontWeight: FontWeight.w300),
+    ),
+    const Text(
+      'NOTICIAS',
+      style: TextStyle(fontWeight: FontWeight.w300),
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme.getTheme(),
+        themeMode: ThemeMode.system,
         home: Scaffold(
           drawer: Drawer(
               shadowColor: colori[_currentIndex],
-              elevation: 20.20,
+              elevation: 10.20,
               shape: const Border(left: BorderSide.none),
-              // backgroundColor: const Color(0xfffecf1f7),
               width: 280,
               child: ListView(
                   // Importante: elimine cualquier padding del ListView.
 
                   children: <Widget>[
                     const Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 20),
+                      padding: EdgeInsets.only(left: 10, bottom: 10),
                       child: Text('Proyecto U',
                           textAlign: TextAlign.justify,
                           style: TextStyle(
@@ -86,39 +107,43 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ListTile(
                         leading: const Icon(Icons.assistant_navigation),
-                        // iconColor: Color.fromARGB(255, 84, 82, 82),
                         enabled: true,
                         title: const Text('SIATH',
                             style: TextStyle(
-                                // color: Color.fromARGB(255, 84, 82, 82),
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12)),
+                                fontWeight: FontWeight.w400, fontSize: 12)),
                         onTap: () async {
                           final url = Uri.parse(
                               'https://portalapp.mindefensa.gov.co:8449/siathweb-app/#/inicio');
                           if (await canLaunchUrl(url)) {
-                            await launchUrl(url);
-                            print('Cliked');
+                            await launchUrl(url,
+                                mode: LaunchMode.platformDefault,
+                                webViewConfiguration:
+                                    const WebViewConfiguration(
+                                        enableDomStorage: true,
+                                        enableJavaScript: true));
+                            ('Cliked');
                             // Actualiza el estado de la aplicación
                             // ...
                           }
                         }),
                     ListTile(
                         leading: const Icon(Icons.family_restroom),
-                        // iconColor: const Color.fromARGB(255, 100, 97, 93),
                         enabled: true,
-                        // hoverColor: const Color.fromARGB(255, 234, 205, 167),
                         title: const Text('BIENESTAR',
                             style: TextStyle(
-                                // color: Color.fromARGB(255, 84, 82, 82),
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12)),
+                                fontWeight: FontWeight.w400, fontSize: 12)),
                         onTap: () async {
                           final url = Uri.parse(
                               'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
                           if (await canLaunchUrl(url)) {
                             await launchUrl(url);
-                            print('Cliked');
+                            (
+                              'Cliked',
+                              mode: LaunchMode.inAppWebView,
+                              webViewConfiguration: const WebViewConfiguration(
+                                  enableDomStorage: true,
+                                  enableJavaScript: true)
+                            );
                             // Actualiza el estado de la aplicación
                             // ...
                           }
@@ -147,11 +172,8 @@ class _HomePageState extends State<HomePage> {
                               title: const Text(
                                 'SEMANA',
                                 style: TextStyle(
-                                    // color: Color.fromARGB(255, 84, 82, 82),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 11),
+                                    fontWeight: FontWeight.w400, fontSize: 11),
                               ),
-                              // iconColor: const Color.fromARGB(255, 84, 82, 82),
                               enabled: true,
                               onTap: () async {
                                 final url =
@@ -163,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                                           const WebViewConfiguration(
                                               enableDomStorage: true,
                                               enableJavaScript: true));
-                                  print('Cliked');
+                                  ('Cliked');
                                   // Actualiza el estado de la aplicación
                                   // ...
                                 }
@@ -173,18 +195,21 @@ class _HomePageState extends State<HomePage> {
                               title: const Text(
                                 'EL TIEMPO',
                                 style: TextStyle(
-                                    // color: Color.fromARGB(255, 84, 82, 82),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 11),
+                                    fontWeight: FontWeight.w400, fontSize: 11),
                               ),
-                              // iconColor: const Color.fromARGB(255, 84, 82, 82),
                               enabled: true,
                               onTap: () async {
                                 final url =
                                     Uri.parse('https://www.eltiempo.com/');
                                 if (await canLaunchUrl(url)) {
-                                  await launchUrl(url);
-                                  print('Cliked');
+                                  await launchUrl(url,
+                                      mode: LaunchMode.inAppWebView,
+                                      webViewConfiguration:
+                                          const WebViewConfiguration(
+                                              enableDomStorage: true,
+                                              enableJavaScript: true));
+
+                                  ('Cliked');
                                   // Actualiza el estado de la aplicación
                                   // ...
                                 }
@@ -194,18 +219,20 @@ class _HomePageState extends State<HomePage> {
                               title: const Text(
                                 'EL ESPECTADOR',
                                 style: TextStyle(
-                                    // color: Color.fromARGB(255, 84, 82, 82),
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 11),
+                                    fontWeight: FontWeight.w400, fontSize: 11),
                               ),
-                              // iconColor: const Color.fromARGB(255, 84, 82, 82),
                               enabled: true,
                               onTap: () async {
                                 final url =
                                     Uri.parse('https://www.elespectador.com/');
                                 if (await canLaunchUrl(url)) {
-                                  await launchUrl(url);
-                                  print('Cliked');
+                                  await launchUrl(url,
+                                      mode: LaunchMode.inAppWebView,
+                                      webViewConfiguration:
+                                          const WebViewConfiguration(
+                                              enableDomStorage: true,
+                                              enableJavaScript: true));
+                                  ('Cliked');
                                   // Actualiza el estado de la aplicación
                                   // ...
                                 }
@@ -225,26 +252,40 @@ class _HomePageState extends State<HomePage> {
                               fontFamily: AutofillHints.birthdayMonth,
                               decorationStyle: TextDecorationStyle.solid,
                               fontStyle: FontStyle.normal,
-                              // fontSize: 18,
                               decoration: TextDecoration.none)),
                     ),
+                    ListTile(
+                        leading: const Icon(Icons.radio_sharp),
+                        title: const Text(
+                          'EMISORAS ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 11),
+                        ),
+                        enabled: false,
+                        onTap: () async {
+                          final url = Uri.parse(
+                              'https://play.google.com/store/apps/details?id=com.proximate.caja_honor');
+                          if (await canLaunchUrl(url)) {
+                            await launchUrl(url);
+                            ('Cliked');
+                            // Actualiza el estado de la aplicación
+                            // ...
+                          }
+                        }),
                     ListTile(
                         leading: const Icon(Icons.cast_for_education_outlined),
                         title: const Text(
                           'DOCTRINA MILITAR',
                           style: TextStyle(
-                              // color: Color.fromARGB(255, 84, 82, 82),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 11),
+                              fontWeight: FontWeight.w400, fontSize: 11),
                         ),
-                        // iconColor: const Color.fromARGB(255, 84, 82, 82),
                         enabled: true,
                         onTap: () async {
                           final url = Uri.parse(
                               'https://play.google.com/store/apps/details?id=co.mil.ejercito.doctrina');
                           if (await canLaunchUrl(url)) {
                             await launchUrl(url);
-                            print('Cliked');
+                            ('Cliked');
                             // Actualiza el estado de la aplicación
                             // ...
                           }
@@ -254,24 +295,21 @@ class _HomePageState extends State<HomePage> {
                         title: const Text(
                           'CAJA DE HONOR',
                           style: TextStyle(
-                              // color: Color.fromARGB(255, 84, 82, 82),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 11),
+                              fontWeight: FontWeight.w400, fontSize: 11),
                         ),
-                        // iconColor: const Color.fromARGB(255, 84, 82, 82),
                         enabled: true,
                         onTap: () async {
                           final url = Uri.parse(
                               'https://play.google.com/store/apps/details?id=com.proximate.caja_honor');
                           if (await canLaunchUrl(url)) {
                             await launchUrl(url);
-                            print('Cliked');
+                            ('Cliked');
                             // Actualiza el estado de la aplicación
                             // ...
                           }
                         }),
                     const SizedBox(
-                      height: 80,
+                      height: 10,
                     ),
                     const Padding(
                       padding: EdgeInsets.only(left: 10, bottom: 10),
@@ -282,7 +320,6 @@ class _HomePageState extends State<HomePage> {
                               fontFamily: AutofillHints.birthdayMonth,
                               decorationStyle: TextDecorationStyle.solid,
                               fontStyle: FontStyle.normal,
-                              // fontSize: 18,
                               decoration: TextDecoration.none)),
                     ),
                     Container(
@@ -291,16 +328,11 @@ class _HomePageState extends State<HomePage> {
                       child: ListaBotones(),
                     ),
                     Column(
-                      // mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TextButton(
                           style: TextButton.styleFrom(
                             elevation: 5.2,
                             padding: const EdgeInsets.only(top: 0, right: 100),
-                            // textStyle: TextStyle(decoration: TextDecoration.underline),
-                            // backgroundColor: const Color(0xfff921b21),
-                            // foregroundColor:
-                            //     const Color.fromARGB(255, 101, 100, 100)
                           ),
                           isSemanticButton: true,
                           child: const Text(
@@ -316,7 +348,7 @@ class _HomePageState extends State<HomePage> {
                                 'https://sites.google.com/view/politicasde-seguridad/politicas-de-seguridad');
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
-                              print('Cliked');
+                              ('Cliked');
                             }
                           },
                         ),
@@ -325,11 +357,9 @@ class _HomePageState extends State<HomePage> {
                   ])),
           appBar: AppBar(
             shadowColor: colori[_currentIndex],
-            elevation: 5.20,
-            toolbarHeight: 40,
-            // iconTheme: IconThemeData(color: colori[_currentIndex]),
-            // backgroundColor: colori[_currentIndex],
-            title: Text('Proyecto U'),
+            elevation: .9,
+            toolbarHeight: 42,
+            title: text[_currentIndex],
             centerTitle: true,
           ),
           body: screens[_currentIndex],
@@ -338,10 +368,8 @@ class _HomePageState extends State<HomePage> {
             margin: const EdgeInsets.only(bottom: 18, right: 0),
             child: GNav(
                 tabBorderRadius: 9000,
-                padding: EdgeInsets.all(15),
-                // iconSize: 15,
+                padding: const EdgeInsets.all(15),
                 color: colori[_currentIndex],
-                // textStyle: TextStyle(fontSize: 13),
                 tabBackgroundColor: colori[_currentIndex],
                 selectedIndex: _currentIndex,
                 onTabChange: (index) => {setState(() => _currentIndex = index)},
@@ -376,15 +404,18 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// ignore: use_key_in_widget_constructors
 class ListaBotones extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
     return Row(
       children: <Widget>[
+        const Text('Dia'),
         IconButton(
             onPressed: () => theme.setTheme(ThemeData.light()),
             icon: const Icon(Icons.light_mode_rounded)),
+        const Text('Noche'),
         IconButton(
             onPressed: () => theme.setTheme(ThemeData.dark()),
             icon: const Icon(Icons.nightlight_outlined)),

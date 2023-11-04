@@ -67,15 +67,20 @@ Widget colunma2() {
 
 Widget espacio() {
   return (const SizedBox(
-    height: 20,
+    height: 14,
   ));
 }
 
 Widget boton1() {
   return Container(
-    margin: const EdgeInsets.only(right: 250, left: 10),
+    margin: const EdgeInsets.only(right: 200, left: 10),
     child: TextButton(
         style: TextButton.styleFrom(
+            elevation: 10,
+            shadowColor: const Color(0xff921b21),
+            shape: const BeveledRectangleBorder(
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(40))),
             padding: const EdgeInsets.all(1.0),
             minimumSize: const Size(30, 30),
             backgroundColor: Colors.blue,
@@ -85,7 +90,7 @@ Widget boton1() {
               'https://portalapp.mindefensa.gov.co:8449/siathweb-app/#/inicio');
           if (await canLaunchUrl(url)) {
             await launchUrl(url);
-            print('Clikec');
+            ('Clikec');
           }
         },
         child: const Text('Ingresa Aqui')),
@@ -94,9 +99,14 @@ Widget boton1() {
 
 Widget boton2() {
   return Container(
-    margin: const EdgeInsets.only(right: 10, left: 250),
+    margin: const EdgeInsets.only(right: 50, left: 150),
     child: TextButton(
         style: TextButton.styleFrom(
+            elevation: 10,
+            shadowColor: const Color(0xff921b21),
+            shape: const BeveledRectangleBorder(
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(40))),
             padding: const EdgeInsets.all(1.0),
             minimumSize: const Size(30, 30),
             backgroundColor: Colors.blue,
@@ -105,7 +115,7 @@ Widget boton2() {
           final url = Uri.parse('https://portal.saludsis.mil.co/');
           if (await canLaunchUrl(url)) {
             await launchUrl(url);
-            print('Clikec');
+            ('Clikec');
           }
         },
         child: const Text('Ingresa Aqui')),
@@ -116,10 +126,13 @@ Widget texto1() {
   return const Padding(
     padding: EdgeInsets.only(top: 20, bottom: 20),
     child: Text(
-      'PROYECTO U',
+      'APLICACIONES DESTACADAS',
       textAlign: TextAlign.center,
       style: TextStyle(
-          fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xfff921b21)),
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        color: Colors.blue,
+      ),
     ),
   );
 }
@@ -128,8 +141,8 @@ Widget division() {
   return const Divider(
     endIndent: 50,
     indent: 50,
-    thickness: 2.05,
-    color: Color.fromARGB(255, 239, 234, 234),
+    thickness: .25,
+    color: Colors.blue,
   );
 }
 

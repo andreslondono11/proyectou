@@ -26,31 +26,58 @@ class _Page2State extends State<Page2> {
           body: ListView(
         children: [
           img1(),
-          linea1(),
-          margen2(),
+          texto1(),
+          const SizedBox(
+            height: 5,
+          ),
+
           cei(),
-          margen1(),
+          const SizedBox(
+            height: 5,
+          ),
+          const Divider(
+            color: Color(0xff921b21),
+            endIndent: 10,
+            thickness: 0.3,
+            height: 20,
+            indent: 20,
+          ),
           img2(),
-          linea1(),
-          margen2(),
+          const SizedBox(
+            height: 3,
+          ),
           boton1(),
-          margen1(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              img4(),
-              img3(),
-            ],
+          const SizedBox(
+            height: 5,
           ),
-          linea1(),
-          // margen2(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              boton3(),
-              boton2(),
-            ],
+          const Divider(
+            color: Color(0xff921b21),
+            endIndent: 10,
+            thickness: 0.3,
+            height: 20,
+            indent: 20,
           ),
+          img3(),
+          const SizedBox(
+            height: 3,
+          ),
+          boton2(),
+          const SizedBox(
+            height: 5,
+          ),
+          const Divider(
+            color: Color(0xff921b21),
+            endIndent: 10,
+            thickness: 0.3,
+            height: 20,
+            indent: 20,
+          ),
+          img4(),
+          const SizedBox(
+            height: 3,
+          ),
+          boton3(),
+
           // margen1(),
           // linea1(),
           // margen2(),
@@ -65,64 +92,70 @@ Image img1() {
     width: 800,
     image: AssetImage('assets/images/correov.png'),
   );
-
-  // Image(
-  //   height: 120,
-  //   fit: BoxFit.scaleDown,
-
-  //   image: AssetImage('assets/images/correov.png'),
-  // );
 }
 
-Widget linea1() {
-  return const Divider(
-    color: Color(0xfff921b21),
-    endIndent: 50,
-    thickness: 0.09,
-    height: 10,
-    indent: 50,
+Padding texto1() {
+  return const Padding(
+    padding: EdgeInsets.only(top: 3, right: 12, left: 13),
+    child: Text(
+      'Ingresa al Correo Institucional del Ejercito Nacional, a traves de ellos puedes enviar y recibir correos',
+      textAlign: TextAlign.center,
+    ),
   );
 }
 
 Widget cei() {
   return (Row(
-    mainAxisAlignment: MainAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: [
       Container(
-          margin: const EdgeInsets.only(right: 10, left: 50),
-          padding: const EdgeInsets.only(right: 10, left: 0),
+          margin: const EdgeInsets.only(right: 0, left: 0, bottom: 10),
+          padding: const EdgeInsets.only(
+            right: 00,
+            left: 0,
+          ),
           child: TextButton(
               style: TextButton.styleFrom(
-                  backgroundColor: const Color(0xfff921b21),
+                  elevation: 10,
+                  shadowColor: const Color(0xff921b21),
+                  shape: const BeveledRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(bottom: Radius.circular(40))),
+                  backgroundColor: const Color(0xff921b21),
                   foregroundColor: const Color.fromARGB(255, 241, 242, 242)),
               onPressed: () async {
                 final url = Uri.parse('https://correo.buzonejercito.mil.co/');
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url);
-                  print('Cliked');
+                  ('Cliked');
                 }
               },
               child: const Text(
-                'OF-SUB-CIV',
-                style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
+                'Oficiales-Suboficiales-Civiles',
+                style: TextStyle(fontSize: 7, fontWeight: FontWeight.bold),
               ))),
       Container(
-          margin: const EdgeInsets.only(right: 50, left: 50),
-          padding: const EdgeInsets.only(right: 10, left: 20),
+          margin: const EdgeInsets.only(right: 0, left: 0, bottom: 10),
+          padding: const EdgeInsets.only(right: 0, left: 0),
           child: TextButton(
               style: TextButton.styleFrom(
-                  backgroundColor: const Color(0xfff921b21),
+                  elevation: 10,
+                  shadowColor: const Color(0xff921b21),
+                  shape: const BeveledRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(bottom: Radius.circular(40))),
+                  backgroundColor: const Color(0xff921b21),
                   foregroundColor: const Color.fromARGB(255, 241, 242, 242)),
               onPressed: () async {
                 final url = Uri.parse('https://correo1.buzonejercito.mil.co/');
                 if (await canLaunchUrl(url)) {
                   await launchUrl(url);
-                  print('Cliked');
+                  ('Cliked');
                 }
               },
-              child: const Text('SLP-OPS',
+              child: const Text('Soldados Profesionales- OperServicios',
                   style: TextStyle(
-                    fontSize: 9,
+                    fontSize: 7,
                     fontWeight: FontWeight.bold,
                   )))),
     ],
@@ -130,95 +163,144 @@ Widget cei() {
 }
 
 Widget img2() {
-  return const Image(
-    image: AssetImage('assets/images/siweb.png'),
-  );
-}
-
-Widget margen1() {
-  return const SizedBox(
-    height: 35,
-  );
-}
-
-Widget margen2() {
-  return const SizedBox(
-    height: 10,
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      Image(
+        width: 200,
+        image: AssetImage('assets/images/siweb.png'),
+      ),
+      SizedBox(
+        width: 120,
+        child: Text(
+          'El Comando del Ejercito Nacional a traves del Talento Humano pone a disposicion los servicios de Notificacion de Cursos, traslados',
+          style: TextStyle(fontSize: 10.5),
+          textAlign: TextAlign.left,
+        ),
+      ),
+    ],
   );
 }
 
 Widget boton1() {
   return Container(
-      margin: const EdgeInsets.only(right: 100, left: 100),
+      padding: const EdgeInsets.only(left: 0, right: 0, top: 0),
+      margin: const EdgeInsets.only(right: 150, left: 10, bottom: 0),
       child: TextButton(
           style: TextButton.styleFrom(
-              backgroundColor: const Color(0xfff921b21),
+              elevation: 10,
+              shape: const BeveledRectangleBorder(
+                  borderRadius:
+                      BorderRadius.vertical(bottom: Radius.circular(40))),
+              shadowColor: const Color(0xff921b21),
+              backgroundColor: const Color(0xff921b21),
               foregroundColor: const Color.fromARGB(255, 241, 242, 242)),
           onPressed: () async {
             final url =
                 Uri.parse('https://caocc.ejercito.mil.co:4443/SiwepDiper-web/');
             if (await canLaunchUrl(url)) {
               await launchUrl(url);
-              print('Cliked');
+              ('Cliked');
             }
           },
           child: const Text(
-            'NOTIFICIACIONES',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            'INGRESA AQUI',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9),
           )));
 }
 
 Widget img3() {
-  return const Image(
-    height: 80,
-    image: AssetImage('assets/images/fovid.png'),
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      SizedBox(
+        width: 120,
+        child: Text(
+          'El Comando del Ejercito Nacional a traves de la Oficina Servicio al Ciudadano pone a disposicion este espacio para realizar solicitudes y  PQRS',
+          style: TextStyle(fontSize: 10.5),
+          textAlign: TextAlign.left,
+        ),
+      ),
+      Image(
+        height: 110,
+        image: AssetImage('assets/images/sac.png'),
+      ),
+    ],
+  );
+}
+
+Widget img4() {
+  return const Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      Image(
+        height: 110,
+        image: AssetImage('assets/images/fovid.png'),
+      ),
+      SizedBox(
+        width: 120,
+        child: Text(
+          'El Comando del Ejercito Nacional a traves del Talento Humano pone a disposicion tu folio de vida digital para aceptar tus ultimas anotaciones',
+          style: TextStyle(fontSize: 10.5),
+          textAlign: TextAlign.left,
+        ),
+      ),
+    ],
   );
 }
 
 Widget boton2() {
   return Container(
-      margin: const EdgeInsets.only(right: 10, left: 10),
+      padding: const EdgeInsets.only(left: 0, right: 0, top: 0),
+      margin: const EdgeInsets.only(right: 10, left: 151, bottom: 0),
       child: TextButton(
           style: TextButton.styleFrom(
-              backgroundColor: const Color(0xfff921b21),
+              elevation: 10,
+              shape: const BeveledRectangleBorder(
+                  borderRadius:
+                      BorderRadius.vertical(bottom: Radius.circular(40))),
+              shadowColor: const Color(0xff921b21),
+              backgroundColor: const Color(0xff921b21),
+              foregroundColor: const Color.fromARGB(255, 241, 242, 242)),
+          onPressed: () async {
+            final url = Uri.parse('https://www.pqr.mil.co/');
+            if (await canLaunchUrl(url)) {
+              await launchUrl(url);
+              ('Cliked');
+            }
+          },
+          child: const Text(
+            'INGRESA AQUI ',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
+          )));
+}
+
+Widget boton3() {
+  return Container(
+      padding: const EdgeInsets.only(left: 0, right: 0, top: 0),
+      margin: const EdgeInsets.only(right: 152, left: 10, bottom: 0),
+      child: TextButton(
+          style: TextButton.styleFrom(
+              elevation: 10,
+              shape: const BeveledRectangleBorder(
+                  borderRadius:
+                      BorderRadius.vertical(bottom: Radius.circular(40))),
+              shadowColor: const Color(0xff921b21),
+              backgroundColor: const Color(0xff921b21),
               foregroundColor: const Color.fromARGB(255, 241, 242, 242)),
           onPressed: () async {
             final url =
                 Uri.parse('https://fovid.ejercito.mil.co:4443/Fovid-2.0/');
             if (await canLaunchUrl(url)) {
               await launchUrl(url);
-              print('Cliked');
-            }
-          },
-          child: const Text(
-            'INGRESA AQUI ',
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-          )));
-}
-
-Widget img4() {
-  return const Image(
-    height: 80,
-    image: AssetImage('assets/images/sac.png'),
-  );
-}
-
-Widget boton3() {
-  return Container(
-      margin: const EdgeInsets.only(right: 20, left: 1),
-      child: TextButton(
-          style: TextButton.styleFrom(
-              backgroundColor: const Color(0xfff921b21),
-              foregroundColor: const Color.fromARGB(255, 241, 242, 242)),
-          onPressed: () async {
-            final url = Uri.parse('https://www.pqr.mil.co/');
-            if (await canLaunchUrl(url)) {
-              await launchUrl(url);
-              print('Cliked');
+              ('Cliked');
             }
           },
           child: const Text(
             'INGRESA  AQUI',
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),
           )));
 }

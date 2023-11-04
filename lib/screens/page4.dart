@@ -38,6 +38,7 @@ class _Page4State extends State<Page4> {
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
+        themeMode: ThemeMode.system,
         theme: theme.getTheme(),
         debugShowCheckedModeBanner: false,
         home: Scaffold(body: WebViewWidget(controller: controller)));
