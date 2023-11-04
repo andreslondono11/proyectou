@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     rateMyApp.init().then((_) {
       for (var condition in rateMyApp.conditions) {
         if (condition is DebuggableCondition) {
-          print(condition.valuesAsString);
+          (condition.valuesAsString);
         }
       }
       if (rateMyApp.shouldOpenDialog) {
