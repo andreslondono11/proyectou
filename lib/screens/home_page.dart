@@ -378,41 +378,47 @@ class _HomePageState extends State<HomePage> {
           ),
           body: screens[_currentIndex],
           bottomNavigationBar: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
-            margin: const EdgeInsets.only(bottom: 18, right: 0),
-            child: GNav(
-                tabBorderRadius: 9000,
-                padding: const EdgeInsets.all(15),
-                color: colori[_currentIndex],
-                tabBackgroundColor: colori[_currentIndex],
-                selectedIndex: _currentIndex,
-                onTabChange: (index) => {setState(() => _currentIndex = index)},
-                tabs: const [
-                  GButton(
-                    icon: Icons.home,
-                    text: 'Inicio',
-                    iconActiveColor: Colors.white,
-                    textColor: Colors.white,
-                  ),
-                  GButton(
-                    icon: Icons.room_service,
-                    text: 'Servicios',
-                    iconActiveColor: Colors.white,
-                    textColor: Colors.white,
-                  ),
-                  GButton(
-                    icon: Icons.cast_for_education,
-                    text: 'Doctrina',
-                    iconActiveColor: Colors.white,
-                    textColor: Colors.white,
-                  ),
-                  GButton(
-                    icon: Icons.tv,
-                    text: 'Noticias',
-                    iconActiveColor: Colors.white,
-                    textColor: Colors.white,
-                  )
-                ]),
+            //
+
+            margin: const EdgeInsets.only(bottom: 1, right: 0),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 45),
+              child: GNav(
+                  tabBorderRadius: 9000,
+                  padding: const EdgeInsets.only(
+                      top: 6, bottom: 12, left: 6, right: 6),
+                  color: colori[_currentIndex],
+                  tabBackgroundColor: colori[_currentIndex],
+                  selectedIndex: _currentIndex,
+                  onTabChange: (index) =>
+                      {setState(() => _currentIndex = index)},
+                  tabs: const [
+                    GButton(
+                      icon: Icons.home,
+                      text: 'Inicio',
+                      iconActiveColor: Colors.white,
+                      textColor: Colors.white,
+                    ),
+                    GButton(
+                      icon: Icons.room_service,
+                      text: 'Servicios',
+                      iconActiveColor: Colors.white,
+                      textColor: Colors.white,
+                    ),
+                    GButton(
+                      icon: Icons.cast_for_education,
+                      text: 'Doctrina',
+                      iconActiveColor: Colors.white,
+                      textColor: Colors.white,
+                    ),
+                    GButton(
+                      icon: Icons.tv,
+                      text: 'Noticias',
+                      iconActiveColor: Colors.white,
+                      textColor: Colors.white,
+                    )
+                  ]),
+            ),
           ),
         ));
   }
