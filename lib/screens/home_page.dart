@@ -82,279 +82,293 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeChanger>(context);
+    var mediaQuery = MediaQuery.of(context);
+    Size size = mediaQuery.size;
+
+    ("Ancho:${size.width}");
+    ("Altura:${size.height}");
+
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: theme.getTheme(),
         themeMode: ThemeMode.system,
         home: Scaffold(
-          drawer: Drawer(
-              shadowColor: colori[_currentIndex],
-              elevation: 10.20,
-              shape: const Border(left: BorderSide.none),
-              width: 280,
-              child: ListView(
-                  // Importante: elimine cualquier padding del ListView.
+          drawer: SizedBox(
+            width: size.width * .75,
+            child: Drawer(
+                shadowColor: colori[_currentIndex],
+                elevation: 10.20,
+                shape: const Border(left: BorderSide.none),
+                child: ListView(
+                    // Importante: elimine cualquier padding del ListView.
 
-                  children: <Widget>[
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 10),
-                      child: Text('Proyecto U',
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                              decoration: TextDecoration.none)),
-                    ),
-                    ListTile(
-                        leading: const Icon(Icons.assistant_navigation),
-                        enabled: true,
-                        title: const Text('SIATH',
+                    children: <Widget>[
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10, bottom: 10),
+                        child: Text('Proyecto U',
+                            textAlign: TextAlign.justify,
                             style: TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 12)),
-                        onTap: () async {
-                          final url = Uri.parse(
-                              'https://portalapp.mindefensa.gov.co:8449/siathweb-app/#/inicio');
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(url,
-                                mode: LaunchMode.platformDefault,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18,
+                                decoration: TextDecoration.none)),
+                      ),
+                      ListTile(
+                          leading: const Icon(Icons.assistant_navigation),
+                          enabled: true,
+                          title: const Text('SIATH',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 12)),
+                          onTap: () async {
+                            final url = Uri.parse(
+                                'https://portalapp.mindefensa.gov.co:8449/siathweb-app/#/inicio');
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url,
+                                  mode: LaunchMode.platformDefault,
+                                  webViewConfiguration:
+                                      const WebViewConfiguration(
+                                          enableDomStorage: true,
+                                          enableJavaScript: true));
+                              ('Cliked');
+                              // Actualiza el estado de la aplicación
+                              // ...
+                            }
+                          }),
+                      ListTile(
+                          leading: const Icon(Icons.family_restroom),
+                          enabled: true,
+                          title: const Text('BIENESTAR',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 12)),
+                          onTap: () async {
+                            final url = Uri.parse(
+                                'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
+                              (
+                                'Cliked',
+                                mode: LaunchMode.inAppWebView,
                                 webViewConfiguration:
                                     const WebViewConfiguration(
                                         enableDomStorage: true,
-                                        enableJavaScript: true));
-                            ('Cliked');
-                            // Actualiza el estado de la aplicación
-                            // ...
-                          }
-                        }),
-                    ListTile(
-                        leading: const Icon(Icons.family_restroom),
-                        enabled: true,
-                        title: const Text('BIENESTAR',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 12)),
-                        onTap: () async {
-                          final url = Uri.parse(
-                              'https://www.mindefensa.gov.co/irj/portal/Mindefensa/contenido?NavigationTarget=navurl://4c4ab427549ea616e21697a36f505a52');
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(url);
-                            (
-                              'Cliked',
-                              mode: LaunchMode.inAppWebView,
-                              webViewConfiguration: const WebViewConfiguration(
-                                  enableDomStorage: true,
-                                  enableJavaScript: true)
-                            );
-                            // Actualiza el estado de la aplicación
-                            // ...
-                          }
-                        }),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 10),
-                      child: Text('CANALES DESTACADOS ',
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontFamily: AutofillHints.birthdayMonth,
-                              decorationStyle: TextDecorationStyle.solid,
-                              fontStyle: FontStyle.normal,
-                              decoration: TextDecoration.none)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(0.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ListTile(
-                              leading: const Icon(Icons.note_outlined),
-                              title: const Text(
-                                'SEMANA',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 11),
-                              ),
-                              enabled: true,
-                              onTap: () async {
-                                final url =
-                                    Uri.parse('https://www.semana.com/');
-                                if (await canLaunchUrl(url)) {
-                                  await launchUrl(url,
-                                      mode: LaunchMode.inAppWebView,
-                                      webViewConfiguration:
-                                          const WebViewConfiguration(
-                                              enableDomStorage: true,
-                                              enableJavaScript: true));
-                                  ('Cliked');
-                                  // Actualiza el estado de la aplicación
-                                  // ...
-                                }
-                              }),
-                          ListTile(
-                              leading: const Icon(Icons.note_outlined),
-                              title: const Text(
-                                'EL TIEMPO',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 11),
-                              ),
-                              enabled: true,
-                              onTap: () async {
-                                final url =
-                                    Uri.parse('https://www.eltiempo.com/');
-                                if (await canLaunchUrl(url)) {
-                                  await launchUrl(url,
-                                      mode: LaunchMode.inAppWebView,
-                                      webViewConfiguration:
-                                          const WebViewConfiguration(
-                                              enableDomStorage: true,
-                                              enableJavaScript: true));
-
-                                  ('Cliked');
-                                  // Actualiza el estado de la aplicación
-                                  // ...
-                                }
-                              }),
-                          ListTile(
-                              leading: const Icon(Icons.note_outlined),
-                              title: const Text(
-                                'EL ESPECTADOR',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 11),
-                              ),
-                              enabled: true,
-                              onTap: () async {
-                                final url =
-                                    Uri.parse('https://www.elespectador.com/');
-                                if (await canLaunchUrl(url)) {
-                                  await launchUrl(url,
-                                      mode: LaunchMode.inAppWebView,
-                                      webViewConfiguration:
-                                          const WebViewConfiguration(
-                                              enableDomStorage: true,
-                                              enableJavaScript: true));
-                                  ('Cliked');
-                                  // Actualiza el estado de la aplicación
-                                  // ...
-                                }
-                              }),
-                        ],
+                                        enableJavaScript: true)
+                              );
+                              // Actualiza el estado de la aplicación
+                              // ...
+                            }
+                          }),
+                      const SizedBox(
+                        height: 30,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 10),
-                      child: Text('APLICACIONES DESTACADAS ',
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontFamily: AutofillHints.birthdayMonth,
-                              decorationStyle: TextDecorationStyle.solid,
-                              fontStyle: FontStyle.normal,
-                              decoration: TextDecoration.none)),
-                    ),
-                    ListTile(
-                        leading: const Icon(Icons.radio_sharp),
-                        title: const Text(
-                          'EMISORAS ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: 11),
-                        ),
-                        enabled: false,
-                        onTap: () async {
-                          final url = Uri.parse(
-                              'https://play.google.com/store/apps/details?id=com.proximate.caja_honor');
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(url);
-                            ('Cliked');
-                            // Actualiza el estado de la aplicación
-                            // ...
-                          }
-                        }),
-                    ListTile(
-                        leading: const Icon(Icons.cast_for_education_outlined),
-                        title: const Text(
-                          'DOCTRINA MILITAR',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: 11),
-                        ),
-                        enabled: true,
-                        onTap: () async {
-                          final url = Uri.parse(
-                              'https://play.google.com/store/apps/details?id=co.mil.ejercito.doctrina');
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(url);
-                            ('Cliked');
-                            // Actualiza el estado de la aplicación
-                            // ...
-                          }
-                        }),
-                    ListTile(
-                        leading: const Icon(Icons.home_work_outlined),
-                        title: const Text(
-                          'CAJA DE HONOR',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: 11),
-                        ),
-                        enabled: true,
-                        onTap: () async {
-                          final url = Uri.parse(
-                              'https://play.google.com/store/apps/details?id=com.proximate.caja_honor');
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(url);
-                            ('Cliked');
-                            // Actualiza el estado de la aplicación
-                            // ...
-                          }
-                        }),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 10),
-                      child: Text('TEMA DE CONFIGURIACION',
-                          textAlign: TextAlign.justify,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontFamily: AutofillHints.birthdayMonth,
-                              decorationStyle: TextDecorationStyle.solid,
-                              fontStyle: FontStyle.normal,
-                              decoration: TextDecoration.none)),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 30),
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: ListaBotones(),
-                    ),
-                    Column(
-                      children: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            elevation: 5.2,
-                            padding: const EdgeInsets.only(top: 0, right: 100),
-                          ),
-                          isSemanticButton: true,
-                          child: const Text(
-                            'POLITICAS DE SEGURIDAD',
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10, bottom: 10),
+                        child: Text('CANALES DESTACADOS ',
+                            textAlign: TextAlign.justify,
                             style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontSize: 12,
-                            ),
-                            textAlign: TextAlign.right,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: AutofillHints.birthdayMonth,
+                                decorationStyle: TextDecorationStyle.solid,
+                                fontStyle: FontStyle.normal,
+                                decoration: TextDecoration.none)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(0.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            ListTile(
+                                leading: const Icon(Icons.note_outlined),
+                                title: const Text(
+                                  'SEMANA',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11),
+                                ),
+                                enabled: true,
+                                onTap: () async {
+                                  final url =
+                                      Uri.parse('https://www.semana.com/');
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url,
+                                        mode: LaunchMode.inAppWebView,
+                                        webViewConfiguration:
+                                            const WebViewConfiguration(
+                                                enableDomStorage: true,
+                                                enableJavaScript: true));
+                                    ('Cliked');
+                                    // Actualiza el estado de la aplicación
+                                    // ...
+                                  }
+                                }),
+                            ListTile(
+                                leading: const Icon(Icons.note_outlined),
+                                title: const Text(
+                                  'EL TIEMPO',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11),
+                                ),
+                                enabled: true,
+                                onTap: () async {
+                                  final url =
+                                      Uri.parse('https://www.eltiempo.com/');
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url,
+                                        mode: LaunchMode.inAppWebView,
+                                        webViewConfiguration:
+                                            const WebViewConfiguration(
+                                                enableDomStorage: true,
+                                                enableJavaScript: true));
+
+                                    ('Cliked');
+                                    // Actualiza el estado de la aplicación
+                                    // ...
+                                  }
+                                }),
+                            ListTile(
+                                leading: const Icon(Icons.note_outlined),
+                                title: const Text(
+                                  'EL ESPECTADOR',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11),
+                                ),
+                                enabled: true,
+                                onTap: () async {
+                                  final url = Uri.parse(
+                                      'https://www.elespectador.com/');
+                                  if (await canLaunchUrl(url)) {
+                                    await launchUrl(url,
+                                        mode: LaunchMode.inAppWebView,
+                                        webViewConfiguration:
+                                            const WebViewConfiguration(
+                                                enableDomStorage: true,
+                                                enableJavaScript: true));
+                                    ('Cliked');
+                                    // Actualiza el estado de la aplicación
+                                    // ...
+                                  }
+                                }),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10, bottom: 10),
+                        child: Text('APLICACIONES DESTACADAS ',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontFamily: AutofillHints.birthdayMonth,
+                                decorationStyle: TextDecorationStyle.solid,
+                                fontStyle: FontStyle.normal,
+                                decoration: TextDecoration.none)),
+                      ),
+                      ListTile(
+                          leading: const Icon(Icons.radio_sharp),
+                          title: const Text(
+                            'EMISORAS ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 11),
                           ),
-                          onPressed: () async {
+                          enabled: false,
+                          onTap: () async {
                             final url = Uri.parse(
-                                'https://sites.google.com/view/politicasde-seguridad/politicas-de-seguridad');
+                                'https://play.google.com/store/apps/details?id=com.proximate.caja_honor');
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                               ('Cliked');
+                              // Actualiza el estado de la aplicación
+                              // ...
                             }
-                          },
-                        ),
-                      ],
-                    )
-                  ])),
+                          }),
+                      ListTile(
+                          leading:
+                              const Icon(Icons.cast_for_education_outlined),
+                          title: const Text(
+                            'DOCTRINA MILITAR',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 11),
+                          ),
+                          enabled: true,
+                          onTap: () async {
+                            final url = Uri.parse(
+                                'https://play.google.com/store/apps/details?id=co.mil.ejercito.doctrina');
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
+                              ('Cliked');
+                              // Actualiza el estado de la aplicación
+                              // ...
+                            }
+                          }),
+                      ListTile(
+                          leading: const Icon(Icons.home_work_outlined),
+                          title: const Text(
+                            'CAJA DE HONOR',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 11),
+                          ),
+                          enabled: true,
+                          onTap: () async {
+                            final url = Uri.parse(
+                                'https://play.google.com/store/apps/details?id=com.proximate.caja_honor');
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
+                              ('Cliked');
+                              // Actualiza el estado de la aplicación
+                              // ...
+                            }
+                          }),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10, bottom: 10),
+                        child: Text('TEMA DE CONFIGURIACION',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontFamily: AutofillHints.birthdayMonth,
+                                decorationStyle: TextDecorationStyle.solid,
+                                fontStyle: FontStyle.normal,
+                                decoration: TextDecoration.none)),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 30),
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: ListaBotones(),
+                      ),
+                      Column(
+                        children: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              elevation: 5.2,
+                              padding: const EdgeInsets.only(
+                                  top: 0, right: 110, left: 10),
+                            ),
+                            isSemanticButton: true,
+                            child: const Text(
+                              'POLITICAS DE SEGURIDAD',
+                              style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.right,
+                            ),
+                            onPressed: () async {
+                              final url = Uri.parse(
+                                  'https://sites.google.com/view/politicasde-seguridad/politicas-de-seguridad');
+                              if (await canLaunchUrl(url)) {
+                                await launchUrl(url);
+                                ('Cliked');
+                              }
+                            },
+                          ),
+                        ],
+                      )
+                    ])),
+          ),
           appBar: AppBar(
             shadowColor: colori[_currentIndex],
             elevation: .9,
