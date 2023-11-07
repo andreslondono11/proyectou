@@ -156,6 +156,24 @@ class _HomePageState extends State<HomePage> {
                               // ...
                             }
                           }),
+                      ListTile(
+                          leading: const Icon(Icons.radio_sharp),
+                          title: const Text(
+                            'EMISORAS ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 11),
+                          ),
+                          enabled: true,
+                          onTap: () async {
+                            final url = Uri.parse(
+                                'https://sites.google.com/view/emisoraspz/p%C3%A1gina-principal');
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
+                              ('Cliked');
+                              // Actualiza el estado de la aplicación
+                              // ...
+                            }
+                          }),
                       const SizedBox(
                         height: 30,
                       ),
@@ -265,24 +283,6 @@ class _HomePageState extends State<HomePage> {
                                 fontStyle: FontStyle.normal,
                                 decoration: TextDecoration.none)),
                       ),
-                      ListTile(
-                          leading: const Icon(Icons.radio_sharp),
-                          title: const Text(
-                            'EMISORAS ',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 11),
-                          ),
-                          enabled: false,
-                          onTap: () async {
-                            final url = Uri.parse(
-                                'https://play.google.com/store/apps/details?id=com.proximate.caja_honor');
-                            if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
-                              ('Cliked');
-                              // Actualiza el estado de la aplicación
-                              // ...
-                            }
-                          }),
                       ListTile(
                           leading:
                               const Icon(Icons.cast_for_education_outlined),
