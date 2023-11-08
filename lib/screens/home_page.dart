@@ -335,9 +335,57 @@ class _HomePageState extends State<HomePage> {
                                 decoration: TextDecoration.none)),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 30),
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: ListaBotones(),
+                        margin: const EdgeInsets.only(
+                          right: 90,
+                        ),
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text('Claro'),
+                            Text('Oscuro'),
+                            Text('Retro'),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                          right: 90,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ListaBotones(),
+                            SizedBox(
+                              height: 25,
+                              width: 35,
+                              child: FloatingActionButton(
+                                onPressed: () => theme.setTheme(ThemeData(
+                                    // primaryColor:
+                                    //     const Color.fromARGB(255, 0, 0, 0),
+
+                                    iconTheme: const IconThemeData(
+                                        color: Color(0xff7c0808)),
+                                    appBarTheme: const AppBarTheme(
+                                      color: Color(0xff7c0808),
+                                      foregroundColor: Colors.white,
+                                    ),
+                                    drawerTheme: const DrawerThemeData(
+                                        backgroundColor: Colors.white))),
+                                child: const Icon(
+                                  shadows: [
+                                    Shadow(
+                                        blurRadius: 0.0,
+                                        offset: Offset(2, 2),
+                                        color: Colors.transparent)
+                                  ],
+                                  Icons.add,
+                                  weight: 1,
+                                  grade: 10,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Column(
                         children: [
@@ -431,11 +479,9 @@ class ListaBotones extends StatelessWidget {
     final theme = Provider.of<ThemeChanger>(context);
     return Row(
       children: <Widget>[
-        const Text('Dia'),
         IconButton(
             onPressed: () => theme.setTheme(ThemeData.light()),
             icon: const Icon(Icons.light_mode_rounded)),
-        const Text('Noche'),
         IconButton(
             onPressed: () => theme.setTheme(ThemeData.dark()),
             icon: const Icon(Icons.nightlight_outlined)),
