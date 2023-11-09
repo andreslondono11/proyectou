@@ -95,16 +95,17 @@ class _HomePageState extends State<HomePage> {
         home: Scaffold(
           drawer: SizedBox(
             width: size.width * .75,
+            height: size.height * .92,
             child: Drawer(
                 shadowColor: colori[_currentIndex],
                 elevation: 10.20,
-                shape: const Border(left: BorderSide.none),
+                // shape: const Border(left: BorderSide.none),
                 child: ListView(
                     // Importante: elimine cualquier padding del ListView.
 
                     children: <Widget>[
                       const Padding(
-                        padding: EdgeInsets.only(left: 10, bottom: 10),
+                        padding: EdgeInsets.only(left: 10, top: 0, bottom: 0),
                         child: Text('Proyecto U',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
@@ -134,6 +135,7 @@ class _HomePageState extends State<HomePage> {
                             }
                           }),
                       ListTile(
+                          minVerticalPadding: 0,
                           leading: const Icon(Icons.family_restroom),
                           enabled: true,
                           title: const Text('BIENESTAR',
@@ -157,6 +159,7 @@ class _HomePageState extends State<HomePage> {
                             }
                           }),
                       ListTile(
+                          minVerticalPadding: 0,
                           leading: const Icon(Icons.radio_sharp),
                           title: const Text(
                             'EMISORAS ',
@@ -168,14 +171,16 @@ class _HomePageState extends State<HomePage> {
                             final url = Uri.parse(
                                 'https://sites.google.com/view/emisoraspz/p%C3%A1gina-principal');
                             if (await canLaunchUrl(url)) {
-                              await launchUrl(url);
+                              await launchUrl(url,
+                                  mode: LaunchMode.inAppWebView);
                               ('Cliked');
                               // Actualiza el estado de la aplicación
                               // ...
                             }
                           }),
-                      const SizedBox(
-                        height: 30,
+                      SizedBox(
+                        // height: size.height * .91,
+                        height: size.height * .005,
                       ),
                       const Padding(
                         padding: EdgeInsets.only(left: 10, bottom: 10),
@@ -269,8 +274,8 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: size.height * .01,
                       ),
                       const Padding(
                         padding: EdgeInsets.only(left: 10, bottom: 10),
@@ -320,12 +325,12 @@ class _HomePageState extends State<HomePage> {
                               // ...
                             }
                           }),
-                      const SizedBox(
-                        height: 10,
+                      SizedBox(
+                        height: size.height * .01,
                       ),
                       const Padding(
                         padding: EdgeInsets.only(left: 10, bottom: 10),
-                        child: Text('TEMA DE CONFIGURIACION',
+                        child: Text('TEMA DE CONFIGURACION',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
                                 fontWeight: FontWeight.w400,
@@ -408,7 +413,8 @@ class _HomePageState extends State<HomePage> {
                               final url = Uri.parse(
                                   'https://sites.google.com/view/politicasde-seguridad/politicas-de-seguridad');
                               if (await canLaunchUrl(url)) {
-                                await launchUrl(url);
+                                await launchUrl(url,
+                                    mode: LaunchMode.inAppWebView);
                                 ('Cliked');
                               }
                             },
