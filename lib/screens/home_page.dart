@@ -1,8 +1,10 @@
 //libreria principal
+
 import 'package:flutter/material.dart';
 //libreria de terceros
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:proyectou/screens/configuracion.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:url_launcher/url_launcher.dart';
 //esta libreria de los scafold
@@ -71,7 +73,7 @@ class _HomePageState extends State<HomePage> {
       style: TextStyle(fontWeight: FontWeight.w300),
     ),
     const Text(
-      'DOCTRINA',
+      'EDUCACION',
       style: TextStyle(fontWeight: FontWeight.w300),
     ),
     const Text(
@@ -95,7 +97,7 @@ class _HomePageState extends State<HomePage> {
         home: Scaffold(
           drawer: SizedBox(
             width: size.width * .75,
-            height: size.height * .92,
+            height: size.height * .80,
             child: Drawer(
                 shadowColor: colori[_currentIndex],
                 elevation: 10.20,
@@ -328,99 +330,20 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         height: size.height * .01,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10, bottom: 10),
-                        child: Text('TEMA DE CONFIGURACION',
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: AutofillHints.birthdayMonth,
-                                decorationStyle: TextDecorationStyle.solid,
-                                fontStyle: FontStyle.normal,
-                                decoration: TextDecoration.none)),
+                      ListTile(
+                        title: const Text(
+                          'Configuracion',
+                        ),
+                        leading: const Icon(Icons.settings),
+                        onTap: () => {
+                          Navigator.pop(context),
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const ConfiguracionNota()))
+                        },
                       ),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          right: 90,
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text('Claro'),
-                            Text('Oscuro'),
-                            Text('Retro'),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(
-                          right: 90,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ListaBotones(),
-                            SizedBox(
-                              height: 25,
-                              width: 35,
-                              child: FloatingActionButton(
-                                onPressed: () => theme.setTheme(ThemeData(
-                                    // primaryColor:
-                                    //     const Color.fromARGB(255, 0, 0, 0),
-
-                                    iconTheme: const IconThemeData(
-                                        color: Color(0xff7c0808)),
-                                    appBarTheme: const AppBarTheme(
-                                      color: Color(0xff7c0808),
-                                      foregroundColor: Colors.white,
-                                    ),
-                                    drawerTheme: const DrawerThemeData(
-                                        backgroundColor: Colors.white))),
-                                child: const Icon(
-                                  shadows: [
-                                    Shadow(
-                                        blurRadius: 0.0,
-                                        offset: Offset(2, 2),
-                                        color: Colors.transparent)
-                                  ],
-                                  Icons.add,
-                                  weight: 1,
-                                  grade: 10,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              elevation: 5.2,
-                              padding: const EdgeInsets.only(
-                                  top: 0, right: 110, left: 10),
-                            ),
-                            isSemanticButton: true,
-                            child: const Text(
-                              'POLITICAS DE SEGURIDAD',
-                              style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: 12,
-                              ),
-                              textAlign: TextAlign.right,
-                            ),
-                            onPressed: () async {
-                              final url = Uri.parse(
-                                  'https://sites.google.com/view/politicasde-seguridad/politicas-de-seguridad');
-                              if (await canLaunchUrl(url)) {
-                                await launchUrl(url,
-                                    mode: LaunchMode.inAppWebView);
-                                ('Cliked');
-                              }
-                            },
-                          ),
-                        ],
-                      )
                     ])),
           ),
           appBar: AppBar(
@@ -461,7 +384,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     GButton(
                       icon: Icons.cast_for_education,
-                      text: 'Doctrina',
+                      text: 'Educacion',
                       iconActiveColor: Colors.white,
                       textColor: Colors.white,
                     ),
