@@ -15,28 +15,6 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   final Orientation orientation = Orientation.landscape;
 
-  @override
-  Widget build(BuildContext context) {
-    final theme = Provider.of<ThemeChanger>(context);
-    var mediaQuery = MediaQuery.of(context);
-    // Size size = mediaQuery.size;
-
-    // ("Ancho:${size.width}");
-    // ("Altura:${size.height}");
-    return MaterialApp(
-        theme: theme.getTheme(),
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: Builder(builder: (context) {
-            if (mediaQuery.orientation == Orientation.portrait) {
-              return potraitWidget(mediaQuery.size);
-            } else {
-              return landscapewidget(mediaQuery.size);
-            }
-          }),
-        ));
-  }
-
   Widget potraitWidget(Size size) {
     return ListView(
       children: [
@@ -48,7 +26,6 @@ class _Page1State extends State<Page1> {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.blue,
             ),
           ),
         ),
@@ -186,7 +163,7 @@ class _Page1State extends State<Page1> {
               textAlign: TextAlign.justify,
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -331,6 +308,28 @@ class _Page1State extends State<Page1> {
         )
       ],
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+    var mediaQuery = MediaQuery.of(context);
+    // Size size = mediaQuery.size;
+
+    // ("Ancho:${size.width}");
+    // ("Altura:${size.height}");
+    return MaterialApp(
+        theme: theme.getTheme(),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: Builder(builder: (context) {
+            if (mediaQuery.orientation == Orientation.portrait) {
+              return potraitWidget(mediaQuery.size);
+            } else {
+              return landscapewidget(mediaQuery.size);
+            }
+          }),
+        ));
   }
 }
 //
