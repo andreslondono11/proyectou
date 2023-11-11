@@ -221,10 +221,10 @@ Widget potraitWidget(Size size) {
                         // ...
                       }
                     }),
-                SizedBox(
-                  // height: size.height * .91,
-                  height: size.height * .005,
-                ),
+                // SizedBox(
+                //   // height: size.height * .91,
+                //   height: size.height * .005,
+                // ),
                 const Padding(
                   padding: EdgeInsets.only(left: 10, bottom: 10),
                   child: Text('CANALES DESTACADOS ',
@@ -312,9 +312,9 @@ Widget potraitWidget(Size size) {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: size.height * .01,
-                ),
+                // SizedBox(
+                //   height: size.height * .01,
+                // ),
                 const Padding(
                   padding: EdgeInsets.only(left: 10, bottom: 10),
                   child: Text('APLICACIONES DESTACADAS ',
@@ -362,9 +362,9 @@ Widget potraitWidget(Size size) {
                         // ...
                       }
                     }),
-                SizedBox(
-                  height: size.height * .01,
-                ),
+                // SizedBox(
+                //   height: size.height * .01,
+                // ),
                 const SizedBox(
                   child: Cofi(),
                 ),
@@ -667,11 +667,8 @@ class Cofi extends StatelessWidget {
       ),
       leading: const Icon(Icons.settings),
       onTap: () => {
-        Navigator.pop(context),
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => const ConfiguracionNota()))
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const ConfiguracionNota()))
       },
     );
   }
@@ -784,11 +781,8 @@ class _Cofi2State extends State<Cofi2> {
         ),
       ]),
       onPressed: () => {
-        Navigator.pop(context),
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => const ConfiguracionNota()))
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const ConfiguracionNota()))
       },
     );
   }
