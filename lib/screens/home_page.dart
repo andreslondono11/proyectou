@@ -226,8 +226,8 @@ Widget potraitWidget(Size size) {
                 //   height: size.height * .005,
                 // ),
                 const Padding(
-                  padding: EdgeInsets.only(left: 10, bottom: 10),
-                  child: Text('CANALES DESTACADOS ',
+                  padding: EdgeInsets.only(left: 10, bottom: 0),
+                  child: Text('REVISTAS INFORMATIVAS ',
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -316,8 +316,8 @@ Widget potraitWidget(Size size) {
                 //   height: size.height * .01,
                 // ),
                 const Padding(
-                  padding: EdgeInsets.only(left: 10, bottom: 10),
-                  child: Text('APLICACIONES DESTACADAS ',
+                  padding: EdgeInsets.only(left: 10, bottom: 0),
+                  child: Text('APLICACIONES RECOMENDADAS ',
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -392,7 +392,7 @@ Widget landscapewidget(Size size) {
   final text2 = [const TextStyle(fontSize: 18, fontWeight: FontWeight.w400)];
   int currentIndex = 0;
   return Scaffold(
-    endDrawer: SizedBox(
+    drawer: SizedBox(
         width: size.width * .85,
         height: size.height * .85,
         child: Drawer(
@@ -406,7 +406,8 @@ Widget landscapewidget(Size size) {
                     Text('Institucional', style: text1[currentIndex]),
                     Container(
                         padding: const EdgeInsets.only(left: 20, right: 0),
-                        child: Text('Destacadas', style: text1[currentIndex])),
+                        child:
+                            Text('Informativas', style: text1[currentIndex])),
                     Text('Recomendadas', style: text1[currentIndex])
                   ],
                 ),
@@ -592,7 +593,7 @@ Widget landscapewidget(Size size) {
                             size: 30,
                           ),
                           Text(
-                            'Su Emisora',
+                            '    Emisora',
                             style: text2[currentIndex],
                           )
                         ],

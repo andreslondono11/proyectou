@@ -179,7 +179,6 @@ class _Page1State extends State<Page1> {
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
-            color: Colors.blue,
           ),
         ),
 

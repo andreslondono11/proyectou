@@ -369,8 +369,8 @@ class Temas1 extends StatelessWidget {
                                           buttonColor: Colors.amberAccent),
                                       useMaterial3: true,
                                       listTileTheme: const ListTileThemeData(
-                                          iconColor: Colors.grey,
-                                          textColor: Colors.grey,
+                                          iconColor: Colors.deepOrange,
+                                          textColor: Colors.deepOrange,
                                           selectedColor: Color(0xff7c0808)),
                                       bottomSheetTheme:
                                           const BottomSheetThemeData(
@@ -378,7 +378,8 @@ class Temas1 extends StatelessWidget {
                                       drawerTheme: const DrawerThemeData(
                                           width: 200,
                                           elevation: 1.10,
-                                          backgroundColor: Colors.white),
+                                          backgroundColor: Color.fromARGB(
+                                              255, 198, 231, 245)),
                                       colorScheme: const ColorScheme(
                                         background: Colors.white,
                                         brightness: Brightness.light,
@@ -496,7 +497,7 @@ class Temas1 extends StatelessWidget {
                                           titleMedium: TextStyle(
                                               color: Color(0xff7c0808)),
                                           bodyMedium:
-                                              TextStyle(color: Colors.white)),
+                                              TextStyle(color: Colors.black)),
                                       appBarTheme: const AppBarTheme(
                                           elevation: 10.2,
                                           shadowColor: Colors.black,
@@ -582,6 +583,7 @@ class Temas1 extends StatelessWidget {
   }
 }
 
+//tema2 de el landscape
 class Temas2 extends StatelessWidget {
   const Temas2({super.key});
 
@@ -686,6 +688,8 @@ class Temas2 extends StatelessWidget {
                                       bodyMedium:
                                           TextStyle(color: Color(0xff7c0808))),
                                   appBarTheme: const AppBarTheme(
+                                      iconTheme:
+                                          IconThemeData(color: Colors.white),
 
                                       // color: Color(0xff7c0808),
                                       foregroundColor: Colors.white,
@@ -702,8 +706,8 @@ class Temas2 extends StatelessWidget {
                                       buttonColor: Colors.amberAccent),
                                   useMaterial3: true,
                                   listTileTheme: const ListTileThemeData(
-                                      iconColor: Colors.grey,
-                                      textColor: Colors.grey,
+                                      iconColor: Colors.deepOrange,
+                                      textColor: Colors.deepOrange,
                                       selectedColor: Color(0xff7c0808)),
                                   bottomSheetTheme: const BottomSheetThemeData(
                                       backgroundColor: Colors.white),
@@ -717,7 +721,8 @@ class Temas2 extends StatelessWidget {
                                     onPrimary: Color.fromARGB(255, 104, 6, 6),
                                     onBackground:
                                         Color.fromARGB(255, 155, 18, 18),
-                                    onSurface: Color.fromARGB(255, 33, 33, 33),
+                                    onSurface:
+                                        Color.fromARGB(255, 255, 253, 253),
                                     primary: Color.fromARGB(255, 68, 41, 41),
                                     onSecondary:
                                         Color.fromARGB(255, 255, 255, 255),
@@ -785,7 +790,8 @@ class Temas2 extends StatelessWidget {
                                     onPrimary: Color.fromARGB(255, 104, 6, 6),
                                     onBackground:
                                         Color.fromARGB(255, 155, 18, 18),
-                                    onSurface: Color.fromARGB(255, 33, 33, 33),
+                                    onSurface:
+                                        Color.fromARGB(255, 244, 242, 242),
                                     primary: Color.fromARGB(255, 241, 234, 234),
                                     onSecondary:
                                         Color.fromARGB(255, 255, 255, 255),
@@ -818,7 +824,7 @@ class Temas2 extends StatelessWidget {
                                         titleMedium:
                                             TextStyle(color: Color(0xff7c0808)),
                                         bodyMedium:
-                                            TextStyle(color: Colors.white)),
+                                            TextStyle(color: Colors.black)),
                                     appBarTheme: const AppBarTheme(
                                         elevation: 10.2,
                                         shadowColor: Colors.black,
@@ -862,7 +868,7 @@ class Temas2 extends StatelessWidget {
                                       onBackground:
                                           Color.fromARGB(255, 155, 18, 18),
                                       onSurface:
-                                          Color.fromARGB(255, 33, 33, 33),
+                                          Color.fromARGB(255, 255, 254, 254),
                                       primary:
                                           Color.fromARGB(255, 241, 234, 234),
                                       onSecondary:
