@@ -42,12 +42,10 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-        <!-- <meta-data
+        <meta-data
             android:name="com.startapp.sdk.APPLICATION_ID"
-            android:value="209295861" /> -->
-            <meta-data
-            android:name="com.startapp.sdk.RETURN_ADS_ENABLED"
             android:value="209295861" />
+          
 
 
     </application>
