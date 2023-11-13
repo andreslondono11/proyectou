@@ -22,12 +22,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final colori = [
-  //   Colors.blue,
-  //   const Color.fromARGB(255, 160, 19, 9),
-  //   Colors.green,
-  //   const Color.fromARGB(255, 222, 142, 237)
-  // ];
+
 
   final RateMyApp rateMyApp = RateMyApp(
     minDays: 0,
@@ -36,27 +31,7 @@ class _HomePageState extends State<HomePage> {
     googlePlayIdentifier: "com.proyectou.proyectou",
   );
 
-  // final screens = const [Page1(), Page2(), Page3(), Page4()];
-  // final text = [
-  //   const Text(
-  //     'INICIO',
-  //     style: TextStyle(fontWeight: FontWeight.w300),
-  //   ),
-  //   const Text(
-  //     'SERVICIOS',
-  //     style: TextStyle(fontWeight: FontWeight.w300),
-  //   ),
-  //   const Text(
-  //     'EDUCACION',
-  //     style: TextStyle(fontWeight: FontWeight.w300),
-  //   ),
-  //   const Text(
-  //     'NOTICIAS',
-  //     style: TextStyle(fontWeight: FontWeight.w300),
-  //   ),
-  // ];
 
-  // int _currentIndex = 0;
 
   @override
   void initState() {
